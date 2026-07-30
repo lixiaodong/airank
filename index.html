@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>被AI推荐 AIRank · 让 ChatGPT、Claude、DeepSeek、豆包正确认识你 | GEO 生成引擎优化服务</title>
+<meta name="description" content="AIRank 被AI推荐 —— 面向个人 IP 与企业品牌的 GEO（生成引擎优化）服务。让 ChatGPT、Claude、Gemini、DeepSeek、豆包等大模型在回答中正确识别并推荐你。可验证交付：提及率与事实准确率前后对比，附截图与可复现 prompt。不造假、不承诺"保证第一"。">
+<meta name="keywords" content="GEO,生成引擎优化,AI搜索优化,AEO,个人IP,品牌AI可见度,ChatGPT优化,豆包优化,DeepSeek优化,AI提及率,答案引擎优化">
+<meta property="og:type" content="website">
+<meta property="og:title" content="被AI推荐 AIRank · GEO 生成引擎优化服务">
+<meta property="og:description" content="让 ChatGPT、Claude、Gemini、DeepSeek、豆包正确认识你、推荐你。可验证交付，不造假、不承诺保证第一。">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+<link rel="canonical" href="https://airank.pages.dev/">
+<link rel="alternate" type="text/plain" title="LLM-friendly summary (llms.txt)" href="https://airank.pages.dev/llms.txt">
+<link rel="sitemap" type="application/xml" href="https://airank.pages.dev/sitemap.xml">
+
+<!-- GEO：为大模型提供结构化事实 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://airank.pages.dev/#org",
+      "name": "被AI推荐 AIRank",
+      "alternateName": ["AIRank", "被AI推荐", "AIRank GEO"],
+      "url": "https://airank.pages.dev/",
+      "description": "面向个人 IP 与企业品牌的 GEO（生成引擎优化）服务商，帮助客户在 ChatGPT、Claude、Gemini、DeepSeek、豆包等大模型回答中被正确识别与推荐。可验证交付，不编造信息，不承诺保证第一。",
+      "slogan": "用户问 AI 的时候，让它说得出你的名字",
+      "knowsAbout": [
+        "GEO 生成引擎优化",
+        "Generative Engine Optimization",
+        "AEO 答案引擎优化",
+        "AI 搜索可见度优化",
+        "品牌 AI 提及率提升",
+        "个人 IP 打造",
+        "结构化数据与 Schema 标记",
+        "权威信源工程"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://airank.pages.dev/#website",
+      "url": "https://airank.pages.dev/",
+      "name": "被AI推荐 AIRank",
+      "inLanguage": "zh-CN",
+      "publisher": { "@id": "https://airank.pages.dev/#org" }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://airank.pages.dev/#service",
+      "name": "GEO 生成引擎优化服务",
+      "serviceType": "生成引擎优化 (GEO) / AI 搜索可见度优化",
+      "provider": { "@id": "https://airank.pages.dev/#org" },
+      "areaServed": "CN",
+      "description": "通过基线诊断、信息校准、信源工程、权威源铺设、复测交付五步闭环，提升个人 IP 与品牌在 ChatGPT、Claude、Gemini、DeepSeek、豆包、Kimi、文心一言、通义千问等大模型回答中的可见度与事实准确率。",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "GEO 服务套餐",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "AI 形象诊断",
+            "price": "199",
+            "priceCurrency": "CNY",
+            "description": "覆盖 3 个 AI 平台、20+ 条标准提问跑测、逐条截图存证、AI 可见度评分与优化建议，3 个工作日交付。",
+            "category": "诊断服务"
+          },
+          {
+            "@type": "Offer",
+            "name": "AI 说对你（基础包）",
+            "price": "3800",
+            "priceCurrency": "CNY",
+            "description": "含完整诊断、5 个 AI 平台覆盖、全网身份信息校准、结构化事实内容工程、权威信源铺设、Schema 标记、复测前后对比报告与可复现 prompt 清单，约 4 周交付。",
+            "category": "优化服务"
+          },
+          {
+            "@type": "Offer",
+            "name": "持续监测（订阅）",
+            "price": "399",
+            "priceCurrency": "CNY",
+            "description": "每月全平台复测、提及率趋势报告、信息过时预警、内容持续维护、模型更新跟进、品类词推荐运营。",
+            "category": "订阅服务"
+          }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://airank.pages.dev/#faq",
+      "isPartOf": { "@id": "https://airank.pages.dev/#website" },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "能让 ChatGPT「收录」我吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不能，任何服务商都不能——大模型没有「提交收录」这个机制，宣称可以收录的均不可信。真正可做且可交付的是：让 AI 联网检索时能找到你并准确描述你，即把信息做成 AI 易读取、易引用的结构化事实，并铺设到 AI 实际会检索的权威信源。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "GEO 是什么？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "GEO 即 Generative Engine Optimization（生成引擎优化），是针对生成式 AI 回答的优化实践，目标是让个人或品牌在 ChatGPT、Claude、DeepSeek、豆包等大模型的回答中被正确识别、准确描述并被推荐。也被称为 AEO（答案引擎优化）或 AI 搜索优化。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "GEO 优化多久能见效？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "基础包通常约 4 周可见明显变化，具体取决于客户现有的信息基础：已有官网与公开报道的会更快，从零开始的需要更多时间做信源积累。任何宣称「三天见效」的服务商均不可信。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "GEO 服务的效果如何验证？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "使用同一套标准提问集在服务前后各跑测一次，提供 AI 提及率、事实准确率、正确识别平台数的前后对比数据，每条附截图存证，并提供完整 prompt 清单供客户自行复现验证。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "会使用刷号、批量灌水等手段吗？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "不会。批量注册小号发帖短期或有效果，但会导致账号封禁、百科词条回退、平台判定营销号，最终反噬客户品牌。仅采用真实内容路线，铺设经得起核查的信息。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "哪些人需要做 GEO？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "专业身份即变现来源的人群最需要——律师、财税顾问、投资人、咨询顾问、知识博主、讲师、独立创业者、企业高管，以及需要建立 AI 可见度的企业品牌与产品。因为客户在决策前会先问 AI，而 AI 的回答直接影响成交。"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#0a0e1a; --bg-2:#0f1424; --card:#141a2e; --card-2:#1a2138;
+  --line:rgba(255,255,255,.08); --line-2:rgba(255,255,255,.14);
+  --tx:#e8ecf5; --tx-2:#9aa5bd; --tx-3:#6b768f;
+  --ac:#5b8cff; --ac-2:#7c5cff; --ok:#2ecc8f; --warn:#ffb340;
+  --grad:linear-gradient(135deg,#5b8cff 0%,#7c5cff 100%);
+  --r:16px; --maxw:1160px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  background:var(--bg); color:var(--tx); line-height:1.7; -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+a{color:inherit;text-decoration:none}
+section{padding:90px 0;position:relative}
+.eyebrow{
+  display:inline-block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--ac);background:rgba(91,140,255,.1);border:1px solid rgba(91,140,255,.25);
+  padding:6px 14px;border-radius:999px;margin-bottom:20px;font-weight:600;
+}
+h2{font-size:clamp(28px,4vw,40px);line-height:1.25;font-weight:700;letter-spacing:-.02em;margin-bottom:16px}
+.lead{color:var(--tx-2);font-size:17px;max-width:660px;margin-bottom:48px}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+/* ---------- NAV ---------- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,14,26,.72);backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--line);
+}
+.nav-in{max-width:var(--maxw);margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:19px;letter-spacing:-.02em;display:flex;align-items:center;gap:9px}
+.logo-mark{
+  width:30px;height:30px;border-radius:8px;background:var(--grad);
+  display:grid;place-items:center;font-size:15px;
+}
+.nav-links{display:flex;gap:30px;font-size:15px;color:var(--tx-2)}
+.nav-links a:hover{color:var(--tx)}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 24px;border-radius:10px;font-weight:600;font-size:15px;
+  border:1px solid transparent;cursor:pointer;transition:.2s;white-space:nowrap;
+}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:0 6px 24px rgba(91,140,255,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(91,140,255,.42)}
+.btn-ghost{border-color:var(--line-2);color:var(--tx)}
+.btn-ghost:hover{background:rgba(255,255,255,.05);border-color:var(--ac)}
+.btn-sm{padding:9px 18px;font-size:14px}
+
+/* ---------- HERO ---------- */
+.hero{padding:160px 0 80px;position:relative;overflow:hidden}
+.hero::before{
+  content:'';position:absolute;top:-30%;left:50%;transform:translateX(-50%);
+  width:900px;height:900px;border-radius:50%;
+  background:radial-gradient(circle,rgba(91,140,255,.14) 0%,transparent 65%);
+  pointer-events:none;
+}
+.hero-in{position:relative;z-index:1;text-align:center}
+h1{font-size:clamp(34px,6vw,60px);line-height:1.15;font-weight:800;letter-spacing:-.03em;margin-bottom:22px}
+.hero-sub{font-size:clamp(16px,2.2vw,19px);color:var(--tx-2);max-width:640px;margin:0 auto 36px}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:18px}
+.hero-note{font-size:13px;color:var(--tx-3)}
+
+/* 模型 logo 条 */
+.models{margin-top:56px}
+.models-label{font-size:13px;color:var(--tx-3);margin-bottom:18px;letter-spacing:.05em}
+.model-row{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.model-chip{
+  display:flex;align-items:center;gap:8px;padding:10px 18px;
+  background:var(--card);border:1px solid var(--line);border-radius:999px;
+  font-size:14px;font-weight:500;color:var(--tx-2);transition:.2s;
+}
+.model-chip:hover{border-color:var(--ac);color:var(--tx);transform:translateY(-2px)}
+.model-chip .dot{width:7px;height:7px;border-radius:50%;background:var(--ok)}
+
+/* ---------- 痛点对比 ---------- */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:8px}
+.cmp-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.cmp-card.bad{border-color:rgba(255,90,90,.2)}
+.cmp-card.good{border-color:rgba(46,204,143,.25)}
+.cmp-head{display:flex;align-items:center;gap:10px;font-weight:700;font-size:16px;margin-bottom:18px}
+.cmp-head .ic{width:26px;height:26px;border-radius:7px;display:grid;place-items:center;font-size:14px}
+.bad .ic{background:rgba(255,90,90,.14);color:#ff6b6b}
+.good .ic{background:rgba(46,204,143,.14);color:var(--ok)}
+.cmp-q{font-size:14px;color:var(--tx-3);margin-bottom:10px;font-style:italic}
+.cmp-a{font-size:15px;color:var(--tx-2);padding:14px 16px;background:var(--bg-2);border-radius:10px;border-left:3px solid var(--line-2)}
+.bad .cmp-a{border-left-color:#ff6b6b}
+.good .cmp-a{border-left-color:var(--ok)}
+
+/* ---------- 通用卡片网格 ---------- */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:28px;transition:.25s;
+}
+.card:hover{border-color:var(--line-2);transform:translateY(-3px);background:var(--card-2)}
+.card-ic{
+  width:44px;height:44px;border-radius:11px;background:rgba(91,140,255,.12);
+  display:grid;place-items:center;font-size:20px;margin-bottom:16px;
+}
+.card h3{font-size:17px;font-weight:700;margin-bottom:9px}
+.card p{font-size:14.5px;color:var(--tx-2)}
+
+/* 流程步骤 */
+.step-num{
+  font-size:13px;font-weight:800;color:var(--ac);
+  background:rgba(91,140,255,.12);width:28px;height:28px;border-radius:8px;
+  display:grid;place-items:center;margin-bottom:14px;
+}
+
+/* ---------- 定价 ---------- */
+.pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+.plan{
+  background:var(--card);border:1px solid var(--line);border-radius:20px;
+  padding:32px 28px;display:flex;flex-direction:column;position:relative;transition:.25s;
+}
+.plan:hover{border-color:var(--line-2);transform:translateY(-4px)}
+.plan.featured{
+  border-color:var(--ac);background:linear-gradient(180deg,rgba(91,140,255,.07) 0%,var(--card) 45%);
+  box-shadow:0 18px 50px rgba(91,140,255,.14);
+}
+.plan-badge{
+  position:absolute;top:-11px;left:50%;transform:translateX(-50%);
+  background:var(--grad);color:#fff;font-size:12px;font-weight:700;
+  padding:5px 16px;border-radius:999px;white-space:nowrap;
+}
+.plan-name{font-size:19px;font-weight:700;margin-bottom:6px}
+.plan-for{font-size:13.5px;color:var(--tx-3);margin-bottom:20px}
+.plan-price{font-size:36px;font-weight:800;letter-spacing:-.02em;margin-bottom:4px}
+.plan-price .cur{font-size:20px;font-weight:600;vertical-align:top;margin-right:2px}
+.plan-price .unit{font-size:14px;font-weight:500;color:var(--tx-3)}
+.plan-tag{font-size:13px;color:var(--tx-3);margin-bottom:24px}
+.plan ul{list-style:none;flex:1;margin-bottom:26px}
+.plan li{
+  font-size:14.5px;color:var(--tx-2);padding:9px 0 9px 26px;position:relative;
+  border-bottom:1px solid rgba(255,255,255,.04);
+}
+.plan li:last-child{border-bottom:none}
+.plan li::before{
+  content:'✓';position:absolute;left:0;top:9px;color:var(--ok);font-weight:800;font-size:14px;
+}
+.plan li.no::before{content:'—';color:var(--tx-3)}
+.plan .btn{width:100%}
+
+/* ---------- 信任区 ---------- */
+.trust{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.trust-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.trust-card{
+  background:rgba(46,204,143,.05);border:1px solid rgba(46,204,143,.18);
+  border-radius:var(--r);padding:26px;
+}
+.trust-card h3{font-size:16px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:9px}
+.trust-card p{font-size:14.5px;color:var(--tx-2)}
+
+.notice{
+  margin-top:32px;padding:22px 26px;border-radius:14px;
+  background:rgba(255,179,64,.06);border:1px solid rgba(255,179,64,.22);
+}
+.notice h4{font-size:15.5px;color:var(--warn);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.notice p{font-size:14.5px;color:var(--tx-2)}
+
+/* ---------- 下单表单 ---------- */
+.order-wrap{
+  background:var(--card);border:1px solid var(--line-2);border-radius:22px;
+  padding:40px;max-width:800px;margin:0 auto;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{margin-bottom:20px}
+label{display:block;font-size:14px;font-weight:600;margin-bottom:8px}
+label .req{color:#ff6b6b;margin-left:3px}
+.hint{font-size:12.5px;color:var(--tx-3);font-weight:400;margin-top:5px}
+input[type=text],input[type=email],input[type=tel],input[type=url],textarea,select{
+  width:100%;padding:13px 15px;background:var(--bg-2);border:1px solid var(--line);
+  border-radius:10px;color:var(--tx);font-size:15px;font-family:inherit;transition:.2s;
+}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--ac);background:var(--bg)}
+textarea{resize:vertical;min-height:110px}
+select{cursor:pointer}
+option{background:var(--bg-2);color:var(--tx)}
+
+/* 模型多选 */
+.model-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+.mp{position:relative}
+.mp input{position:absolute;opacity:0;width:0;height:0}
+.mp label{
+  display:flex;align-items:center;gap:9px;padding:13px 15px;margin:0;
+  background:var(--bg-2);border:1.5px solid var(--line);border-radius:11px;
+  cursor:pointer;transition:.18s;font-weight:500;font-size:14.5px;
+}
+.mp label:hover{border-color:var(--line-2)}
+.mp input:checked + label{
+  border-color:var(--ac);background:rgba(91,140,255,.1);color:var(--tx);
+}
+.mp .chk{
+  width:18px;height:18px;border-radius:5px;border:1.5px solid var(--line-2);
+  display:grid;place-items:center;font-size:11px;color:transparent;flex-shrink:0;transition:.18s;
+}
+.mp input:checked + label .chk{background:var(--ac);border-color:var(--ac);color:#fff}
+
+/* 套餐选择 */
+.plan-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.pp input{position:absolute;opacity:0;width:0;height:0}
+.pp{position:relative}
+.pp label{
+  display:block;padding:16px;margin:0;background:var(--bg-2);
+  border:1.5px solid var(--line);border-radius:12px;cursor:pointer;transition:.18s;text-align:center;
+}
+.pp label:hover{border-color:var(--line-2)}
+.pp input:checked + label{border-color:var(--ac);background:rgba(91,140,255,.1)}
+.pp .pn{font-weight:700;font-size:15px;margin-bottom:4px}
+.pp .pv{font-size:13px;color:var(--tx-3);font-weight:500}
+
+.consent{display:flex;gap:11px;align-items:flex-start;font-size:13.5px;color:var(--tx-2);margin-bottom:24px}
+.consent input{margin-top:4px;width:16px;height:16px;accent-color:var(--ac);flex-shrink:0}
+
+.form-msg{
+  display:none;padding:16px 20px;border-radius:12px;margin-bottom:20px;font-size:14.5px;
+}
+.form-msg.ok{display:block;background:rgba(46,204,143,.1);border:1px solid rgba(46,204,143,.3);color:var(--ok)}
+.form-msg.err{display:block;background:rgba(255,90,90,.1);border:1px solid rgba(255,90,90,.3);color:#ff6b6b}
+
+/* ---------- FAQ ---------- */
+.faq-item{
+  background:var(--card);border:1px solid var(--line);border-radius:14px;
+  margin-bottom:12px;overflow:hidden;
+}
+.faq-q{
+  padding:20px 24px;font-weight:600;font-size:16px;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;gap:16px;transition:.2s;
+}
+.faq-q:hover{background:var(--card-2)}
+.faq-q .arrow{color:var(--ac);transition:.25s;flex-shrink:0;font-size:14px}
+.faq-item.open .arrow{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-item.open .faq-a{max-height:400px}
+.faq-a p{padding:0 24px 22px;color:var(--tx-2);font-size:15px}
+
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--line);padding:50px 0 36px;background:var(--bg-2)}
+.foot{display:flex;justify-content:space-between;align-items:flex-start;gap:40px;flex-wrap:wrap}
+.foot-brand{max-width:340px}
+.foot-brand p{font-size:14px;color:var(--tx-3);margin-top:12px}
+.foot-links{display:flex;gap:60px;flex-wrap:wrap}
+.foot-col h4{font-size:14px;font-weight:700;margin-bottom:14px}
+.foot-col a{display:block;font-size:14px;color:var(--tx-3);margin-bottom:9px}
+.foot-col a:hover{color:var(--ac)}
+.copy{
+  margin-top:40px;padding-top:24px;border-top:1px solid var(--line);
+  font-size:13px;color:var(--tx-3);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;
+}
+
+@media(max-width:900px){
+  .grid-3,.grid-4,.pricing,.trust-grid,.compare,.form-row,.model-picker,.plan-picker{grid-template-columns:1fr}
+  .grid-4{grid-template-columns:1fr 1fr}
+  .nav-links{display:none}
+  section{padding:64px 0}
+  .hero{padding:120px 0 60px}
+  .order-wrap{padding:26px 20px}
+  .model-picker{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-in">
+    <a href="#" class="logo"><span class="logo-mark">🎯</span> 被AI推荐 <span style="color:var(--tx-3);font-weight:500;font-size:14px">AIRank</span></a>
+    <div class="nav-links">
+      <a href="#problem">为什么需要</a>
+      <a href="#how">怎么做</a>
+      <a href="#pricing">价格</a>
+      <a href="#trust">我们的承诺</a>
+      <a href="#faq">常见问题</a>
+    </div>
+    <a href="#order" class="btn btn-primary btn-sm">免费诊断 →</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="wrap hero-in">
+    <span class="eyebrow">GEO · 生成引擎优化</span>
+    <h1>用户问 AI 的时候<br><span class="grad">让它说得出你的名字</span></h1>
+    <p class="hero-sub">
+      越来越多人不再用搜索引擎，而是直接问 AI。如果 ChatGPT、DeepSeek、豆包不认识你、说错你，
+      你就在这场新的流量分配里彻底缺席。我们帮你把这件事修好——<strong style="color:var(--tx)">而且效果可以被验证</strong>。
+    </p>
+    <div class="hero-cta">
+      <a href="#order" class="btn btn-primary">先做一次免费诊断</a>
+      <a href="#how" class="btn btn-ghost">看看怎么做的</a>
+    </div>
+    <p class="hero-note">诊断报告含真实截图与可复现 prompt，看完再决定要不要合作</p>
+
+    <div class="models">
+      <p class="models-label">覆盖平台</p>
+      <div class="model-row">
+        <span class="model-chip"><span class="dot"></span> ChatGPT</span>
+        <span class="model-chip"><span class="dot"></span> Claude</span>
+        <span class="model-chip"><span class="dot"></span> Gemini</span>
+        <span class="model-chip"><span class="dot"></span> DeepSeek</span>
+        <span class="model-chip"><span class="dot"></span> 豆包</span>
+        <span class="model-chip"><span class="dot"></span> Kimi</span>
+        <span class="model-chip"><span class="dot"></span> 文心一言</span>
+        <span class="model-chip"><span class="dot"></span> 通义千问</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ 痛点 ============ -->
+<section id="problem">
+  <div class="wrap">
+    <span class="eyebrow">问题</span>
+    <h2>现在去问问 AI「我是谁」<br>结果可能会让你不舒服</h2>
+    <p class="lead">三种情况最常见：完全不知道你、把你和同名的人搞混、或者说的还是你三年前的信息。而对方正拿这个答案决定要不要找你合作。</p>
+
+    <div class="compare">
+      <div class="cmp-card bad">
+        <div class="cmp-head"><span class="ic">✕</span> 优化前</div>
+        <p class="cmp-q">「XXX 是谁？」</p>
+        <p class="cmp-a">抱歉，我没有找到关于这个人的具体信息……<br><br>（或者：把你说成了另一个同名的人 / 引用了你早就离职的公司）</p>
+      </div>
+      <div class="cmp-card good">
+        <div class="cmp-head"><span class="ic">✓</span> 优化后</div>
+        <p class="cmp-a">XXX 是 ×× 领域的 ××，现任 ××，主要专注于 ××。代表作品包括 ××，可以通过 ×× 了解更多。</p>
+      </div>
+    </div>
+
+    <div class="notice">
+      <h4>⚠️ 先说清楚一件事，免得你被别家忽悠</h4>
+      <p>
+        大模型<strong style="color:var(--tx)">没有</strong>"提交收录"这个东西——你没法花钱让 ChatGPT 把一份资料"收进大脑"，
+        谁承诺这个谁就是在骗你。真正能做、能交付的，是让 AI <strong style="color:var(--tx)">联网检索时能找到你、并且说对你</strong>：
+        把你的信息做成 AI 读得懂、愿意引用的样子，铺到它真正会去查的地方。这就是 GEO。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 怎么做 ============ -->
+<section id="how" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <span class="eyebrow">流程</span>
+    <h2>五步，每一步都留证据</h2>
+    <p class="lead">从诊断到复测形成闭环，不是做完就走。你拿到的每个结论都能自己复现。</p>
+
+    <div class="grid-4">
+      <div class="card">
+        <div class="step-num">01</div>
+        <h3>基线诊断</h3>
+        <p>用一套标准提问跑遍你选的平台，逐条截图打分，量化现在 AI 眼里的你。</p>
+      </div>
+      <div class="card">
+        <div class="step-num">02</div>
+        <h3>信息校准</h3>
+        <p>把全网关于你的说法对齐。AI 最怕信息打架——名字、头衔、公司不一致，它就会猜。</p>
+      </div>
+      <div class="card">
+        <div class="step-num">03</div>
+        <h3>信源工程</h3>
+        <p>把资料改写成 AI 易引用的结构化事实：清晰定义句、FAQ、结构化数据标记。</p>
+      </div>
+      <div class="card">
+        <div class="step-num">04</div>
+        <h3>权威源铺设</h3>
+        <p>铺到 AI 真正会去检索的地方——百科、专业问答、垂类媒体、自有站。只发真内容。</p>
+      </div>
+    </div>
+    <div style="margin-top:18px" class="card">
+      <div class="step-num">05</div>
+      <h3>复测交付</h3>
+      <p>同一套提问再跑一遍，出前后对比报告：提及率、事实准确率、平台覆盖数，附截图和可复现 prompt——<strong style="color:var(--tx)">你自己也能验证</strong>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 定价 ============ -->
+<section id="pricing">
+  <div class="wrap">
+    <span class="eyebrow">价格</span>
+    <h2>先花小钱看清现状<br>再决定要不要修</h2>
+    <p class="lead">建议从诊断开始。看完报告你会很清楚问题在哪、值不值得做。</p>
+
+    <div class="pricing">
+      <div class="plan">
+        <div class="plan-name">AI 形象诊断</div>
+        <div class="plan-for">先看清楚现状</div>
+        <div class="plan-price"><span class="cur">¥</span>199</div>
+        <div class="plan-tag">一次性 · 3 个工作日交付</div>
+        <ul>
+          <li>覆盖 3 个 AI 平台</li>
+          <li>20+ 条标准提问跑测</li>
+          <li>逐条截图存证</li>
+          <li>AI 可见度评分</li>
+          <li>问题诊断与优化建议</li>
+          <li class="no">不含信源铺设</li>
+        </ul>
+        <a href="#order" class="btn btn-ghost" onclick="pick('diagnosis')">选择诊断</a>
+      </div>
+
+      <div class="plan featured">
+        <div class="plan-badge">最多人选</div>
+        <div class="plan-name">AI 说对你</div>
+        <div class="plan-for">让 AI 正确识别并介绍你</div>
+        <div class="plan-price"><span class="cur">¥</span>3,800</div>
+        <div class="plan-tag">一次性 · 约 4 周交付</div>
+        <ul>
+          <li>包含完整诊断</li>
+          <li>覆盖 5 个 AI 平台</li>
+          <li>全网身份信息校准</li>
+          <li>结构化事实内容工程</li>
+          <li>权威信源铺设</li>
+          <li>结构化数据标记（Schema）</li>
+          <li>复测前后对比报告</li>
+          <li>可复现 prompt 清单</li>
+        </ul>
+        <a href="#order" class="btn btn-primary" onclick="pick('basic')">选择基础包</a>
+      </div>
+
+      <div class="plan">
+        <div class="plan-name">持续监测</div>
+        <div class="plan-for">防回落 + 争取被推荐</div>
+        <div class="plan-price"><span class="cur">¥</span>399<span class="unit">/月</span></div>
+        <div class="plan-tag">订阅 · 建议基础包后开启</div>
+        <ul>
+          <li>每月全平台复测</li>
+          <li>提及率趋势报告</li>
+          <li>信息过时预警</li>
+          <li>内容持续维护</li>
+          <li>模型更新后跟进</li>
+          <li>品类词推荐运营</li>
+        </ul>
+        <a href="#order" class="btn btn-ghost" onclick="pick('subscribe')">选择订阅</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 承诺 ============ -->
+<section id="trust" class="trust">
+  <div class="wrap">
+    <span class="eyebrow">我们的承诺</span>
+    <h2>这行水挺深的<br>所以我们把话说在前面</h2>
+    <p class="lead">这个行业已经有人在用"三天见效""保证第一"割韭菜了。我们把不做的事写在明处，你可以拿这三条去衡量任何一家服务商。</p>
+
+    <div class="trust-grid">
+      <div class="trust-card">
+        <h3>🚫 不编造</h3>
+        <p>只用你真实的经历和成就。虚构头衔、编造规模短期看着好看，被识破后砸的是你自己的招牌——这种钱我们不赚。</p>
+      </div>
+      <div class="trust-card">
+        <h3>🚫 不承诺"保证第一"</h3>
+        <p>AI 的回答本身就是不确定的，换个会话、换个地区、模型更新一次，结果都会变。我们只承诺可量化的区间和时间窗口。</p>
+      </div>
+      <div class="trust-card">
+        <h3>🚫 不刷量</h3>
+        <p>不批量注册小号灌水。那样做账号会被封、词条会被回退、平台会判营销号，最后反噬的是你的品牌。</p>
+      </div>
+    </div>
+
+    <div class="notice" style="background:rgba(46,204,143,.05);border-color:rgba(46,204,143,.2)">
+      <h4 style="color:var(--ok)">✓ 我们承诺的是这个</h4>
+      <p>
+        在约定的品牌词提问下，AI 回答的<strong style="color:var(--tx)">事实准确率</strong>从基线提升到约定区间，
+        且至少 N 个平台能正确识别你——<strong style="color:var(--tx)">附前后对比截图和可复现的 prompt 清单，你自己就能验证</strong>。
+        具体数值写进合同。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 下单 ============ -->
+<section id="order">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:44px">
+      <span class="eyebrow">开始</span>
+      <h2>填个表，我们先给你出诊断</h2>
+      <p class="lead" style="margin:0 auto">1 个工作日内联系你确认需求。诊断结果不满意可以直接不做，不勉强。</p>
+    </div>
+
+    <div class="order-wrap">
+      <div id="formMsg" class="form-msg"></div>
+
+      <form id="orderForm">
+        <div class="field">
+          <label>想做哪个套餐？<span class="req">*</span></label>
+          <div class="plan-picker">
+            <div class="pp">
+              <input type="radio" id="p1" name="plan" value="AI形象诊断 ¥199" checked>
+              <label for="p1"><div class="pn">AI 形象诊断</div><div class="pv">¥199</div></label>
+            </div>
+            <div class="pp">
+              <input type="radio" id="p2" name="plan" value="AI说对你 基础包 ¥3800">
+              <label for="p2"><div class="pn">AI 说对你</div><div class="pv">¥3,800</div></label>
+            </div>
+            <div class="pp">
+              <input type="radio" id="p3" name="plan" value="持续监测订阅 ¥399/月">
+              <label for="p3"><div class="pn">持续监测</div><div class="pv">¥399/月</div></label>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>希望在哪些 AI 平台做优化和监测？<span class="req">*</span>
+            <div class="hint">我们会在这些平台上做优化并跟踪提及率变化。注意：这不是"向平台提交收录"——大模型没有这个机制。</div>
+          </label>
+          <div class="model-picker">
+            <div class="mp"><input type="checkbox" id="m1" name="models" value="ChatGPT" checked><label for="m1"><span class="chk">✓</span> ChatGPT</label></div>
+            <div class="mp"><input type="checkbox" id="m2" name="models" value="Claude"><label for="m2"><span class="chk">✓</span> Claude</label></div>
+            <div class="mp"><input type="checkbox" id="m3" name="models" value="Gemini"><label for="m3"><span class="chk">✓</span> Gemini</label></div>
+            <div class="mp"><input type="checkbox" id="m4" name="models" value="DeepSeek" checked><label for="m4"><span class="chk">✓</span> DeepSeek</label></div>
+            <div class="mp"><input type="checkbox" id="m5" name="models" value="豆包" checked><label for="m5"><span class="chk">✓</span> 豆包</label></div>
+            <div class="mp"><input type="checkbox" id="m6" name="models" value="Kimi"><label for="m6"><span class="chk">✓</span> Kimi</label></div>
+            <div class="mp"><input type="checkbox" id="m7" name="models" value="文心一言"><label for="m7"><span class="chk">✓</span> 文心一言</label></div>
+            <div class="mp"><input type="checkbox" id="m8" name="models" value="通义千问"><label for="m8"><span class="chk">✓</span> 通义千问</label></div>
+            <div class="mp"><input type="checkbox" id="m9" name="models" value="其他"><label for="m9"><span class="chk">✓</span> 其他</label></div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="name">怎么称呼你？<span class="req">*</span></label>
+            <input type="text" id="name" name="name" required placeholder="真实姓名或品牌名">
+          </div>
+          <div class="field">
+            <label for="type">优化对象<span class="req">*</span></label>
+            <select id="type" name="type" required>
+              <option value="个人IP">个人 IP（专家 / 创业者 / 顾问 / 创作者）</option>
+              <option value="企业品牌">企业品牌</option>
+              <option value="产品品牌">产品 / 服务</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="contact">联系方式<span class="req">*</span>
+              <div class="hint">微信号或手机号，方便我们联系你</div>
+            </label>
+            <input type="text" id="contact" name="contact" required placeholder="微信号 / 手机号">
+          </div>
+          <div class="field">
+            <label for="email">邮箱
+              <div class="hint">用来接收诊断报告</div>
+            </label>
+            <input type="email" id="email" name="email" placeholder="your@email.com">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="field">你所在的领域<span class="req">*</span>
+            <div class="hint">越具体越好，这决定我们设计哪些测试提问</div>
+          </label>
+          <input type="text" id="field" name="field" required placeholder="例：跨境电商财税顾问、少儿编程教育、Web3 技术专家">
+        </div>
+
+        <div class="field">
+          <label for="links">你现有的网站或主页
+            <div class="hint">官网、公众号、知乎、GitHub、LinkedIn……有几个填几个，一行一个</div>
+          </label>
+          <textarea id="links" name="links" placeholder="https://..."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="goal">你希望 AI 怎么介绍你？<span class="req">*</span>
+            <div class="hint">用一句话说清楚。这是我们做优化的目标，也是验收的标准</div>
+          </label>
+          <textarea id="goal" name="goal" required placeholder="例：希望 AI 提到我时，能说清楚我是专注跨境电商财税的顾问，服务过 XX 类客户，而不是和同名的人搞混。"></textarea>
+        </div>
+
+        <div class="consent">
+          <input type="checkbox" id="agree" required>
+          <label for="agree" style="font-weight:400;margin:0">
+            我已理解：GEO 优化的是「AI 联网检索时如何呈现我」，<strong style="color:var(--tx)">不是向大模型提交收录</strong>；
+            服务方不会编造任何虚假信息，也不承诺「永久出现」或「保证第一」。
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%;padding:15px;font-size:16px">
+          提交需求 · 1 个工作日内联系你
+        </button>
+        <p style="text-align:center;font-size:13px;color:var(--tx-3);margin-top:14px">
+          提交后我们会先确认需求，确认无误再收费——不会直接扣款
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" style="background:var(--bg-2);border-top:1px solid var(--line)">
+  <div class="wrap" style="max-width:840px">
+    <div style="text-align:center;margin-bottom:44px">
+      <span class="eyebrow">常见问题</span>
+      <h2>你可能想问的</h2>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">你们能让 ChatGPT「收录」我吗？<span class="arrow">▼</span></div>
+      <div class="faq-a"><p>不能，任何人都不能——大模型压根没有"提交收录"这个机制，谁承诺这个谁就是在骗你。我们做的是让 AI <strong>联网检索时能找到你、并且说对你</strong>：把你的信息做成它读得懂、愿意引用的样子，铺到它真正会去查的地方。这个是实实在在能做、也能验证的。</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">多久能看到变化？<span class="arrow">▼</span></div>
+      <div class="faq-a"><p>基础包一般 4 周左右能看到明显变化。具体快慢跟你现有的信息基础有关——本来就有官网、有一些公开报道的，会快不少；完全从零开始的，需要更多时间做信源积累。任何说"三天见效"的，你都可以直接划走。</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">怎么证明真的有效果？<span class="arrow">▼</span></div>
+      <div class="faq-a"><p>我们用同一套标准提问，在服务前后各跑一遍，给你前后对比：AI 提及率、事实准确率、正确识别的平台数，每一条都有截图。而且我们会把 prompt 清单给你，<strong>你可以自己去 AI 里复现一遍</strong>——不用听我们说。</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">会不会用刷号、灌水这些方式？<span class="arrow">▼</span></div>
+      <div class="faq-a"><p>不会。批量小号发帖这种做法，短期可能有点效果，但账号会被封、词条会被回退、平台会判营销号，最后砸的是你的招牌。我们只走真实内容路线，铺的都是经得起查的信息。</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">需要我提供什么？<span class="arrow">▼</span></div>
+      <div class="faq-a"><p>真实的个人/品牌资料：简介、履历、代表作品、已有的报道链接、社交账号。信息越完整，我们能做的事越多。另外有些动作需要你本人操作——比如用你的实名账号发布内容、改你自己网站的配置，这些我们会给你写好现成的内容，你贴上去就行。</p></div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">诊断报告能先看看吗？<span class="arrow">▼</span></div>
+      <div class="faq-a"><p>可以。提交需求后我们会先跟你确认，然后出诊断。看完报告你觉得不值得做，直接不做就行，不会有人追着你推销。</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="foot-brand">
+        <a href="#" class="logo"><span class="logo-mark">🎯</span> 被AI推荐 <span style="color:var(--tx-3);font-weight:500;font-size:14px">AIRank</span></a>
+        <p>帮个人 IP 与品牌，在 AI 回答里被正确识别、被推荐。可验证交付，不编造、不承诺"保证第一"。</p>
+      </div>
+      <div class="foot-links">
+        <div class="foot-col">
+          <h4>服务</h4>
+          <a href="#pricing">AI 形象诊断</a>
+          <a href="#pricing">AI 说对你</a>
+          <a href="#pricing">持续监测</a>
+        </div>
+        <div class="foot-col">
+          <h4>了解</h4>
+          <a href="#problem">为什么需要 GEO</a>
+          <a href="#how">服务流程</a>
+          <a href="#trust">我们的承诺</a>
+          <a href="#faq">常见问题</a>
+        </div>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 2026 被AI推荐 AIRank</span>
+      <span>本服务为信息优化服务，不代表与所列 AI 平台存在合作或授权关系</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// FAQ 展开
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>q.parentElement.classList.toggle('open'));
+});
+
+// 定价卡片点击 → 预选套餐
+function pick(k){
+  const map={diagnosis:'p1',basic:'p2',subscribe:'p3'};
+  const el=document.getElementById(map[k]);
+  if(el) el.checked=true;
+}
+
+// 表单提交
+document.getElementById('orderForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const msg=document.getElementById('formMsg');
+  const models=[...document.querySelectorAll('input[name=models]:checked')].map(i=>i.value);
+  if(!models.length){
+    msg.className='form-msg err';
+    msg.textContent='请至少选择一个 AI 平台';
+    msg.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  const fd=new FormData(this);
+  const data={
+    套餐:fd.get('plan'),
+    平台:models.join('、'),
+    称呼:fd.get('name'),
+    对象:fd.get('type'),
+    联系方式:fd.get('contact'),
+    邮箱:fd.get('email')||'—',
+    领域:fd.get('field'),
+    现有主页:fd.get('links')||'—',
+    目标:fd.get('goal')
+  };
+
+  // TODO: 替换成你的表单后端（Formspree / 飞书多维表格 Webhook / 自建 API）
+  // fetch('https://formspree.io/f/YOUR_ID',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+
+  console.log('订单数据：',data);
+  msg.className='form-msg ok';
+  msg.innerHTML='<strong>✓ 已收到你的需求</strong><br>我们会在 1 个工作日内通过你留的联系方式找你确认。<br><span style="font-size:13px;opacity:.8">（当前为演示模式，需接入表单后端才会真正发送）</span>';
+  msg.scrollIntoView({behavior:'smooth',block:'center'});
+});
+</script>
+</body>
+</html>
