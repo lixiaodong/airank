@@ -35,4 +35,4 @@ Allow: /
 User-agent: Sogou web spider
 Allow: /
 
-Sitemap: https://airank.pages.dev/sitemap.xml
+Sitemap: https://lixiaodong.github.io/airank/sitemap.xml

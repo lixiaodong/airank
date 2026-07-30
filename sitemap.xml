@@ -2,13 +2,13 @@
 <urlset xmlns="http://www.sitemap.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://airank.pages.dev/</loc>
+    <loc>https://lixiaodong.github.io/airank/</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://airank.pages.dev/llms.txt</loc>
+    <loc>https://lixiaodong.github.io/airank/llms.txt</loc>
     <lastmod>2026-07-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
