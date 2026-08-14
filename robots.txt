@@ -35,4 +35,4 @@ Allow: /
 User-agent: Sogou web spider
 Allow: /
 
-Sitemap: https://lixiaodong.github.io/airank/sitemap.xml
+Sitemap: https://geoworthy.com/sitemap.xml
