@@ -1,0 +1,6 @@
+# 本地密钥，永不入库
+worker/.dev.vars
+worker/.wrangler/
+node_modules/
+.DS_Store
+worker/.deploy.env

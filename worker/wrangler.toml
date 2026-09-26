@@ -1,0 +1,23 @@
+name = "geoworthy-lead"
+main = "src/index.js"
+compatibility_date = "2026-05-01"
+
+# 允许提交表单的来源（逗号分隔）。非该列表来源的请求直接拒绝。
+[vars]
+ALLOWED_ORIGINS = "https://geoworthy.com,https://www.geoworthy.com"
+LARK_BASE_URL = "https://open.larksuite.com/open-apis"
+
+# 限流 + tenant_access_token 缓存。创建命令见 worker/README.md
+[[kv_namespaces]]
+binding = "GW_KV"
+id = "PLACEHOLDER_KV_ID"
+
+# 下列值用 `wrangler secret put <NAME>` 写入，不要提交到仓库：
+#   LARK_APP_ID          飞书/Lark 应用 App ID
+#   LARK_APP_SECRET      飞书/Lark 应用 App Secret
+#   LARK_RECEIVE_OPEN_ID 线索私聊接收人 open_id
+#   LARK_BASE_TOKEN      多维表格 base_token
+#   LARK_BASE_TABLE_ID   多维表格 table_id
+#   LARK_BASE_LINK       多维表格完整 URL（卡片上「打开线索池」按钮跳转用）
+#
+# base_token 属于可据以访问文档的标识，本仓库是公开的，所以一律走 secret，不写进 toml。

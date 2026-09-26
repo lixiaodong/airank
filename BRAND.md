@@ -6,11 +6,24 @@ GeoWorthy means “worthy of being found and recommended.” The identity combin
 
 ## Logo
 
-- Primary lockup: `G` monogram + `GeoWorthy` wordmark + `AI VISIBILITY` descriptor.
-- Monogram: white serif `G` inside a rounded square.
-- Do not use emoji, gradients inside the English-site mark, shadows heavier than the current web implementation, or substitute icons.
-- Minimum digital size: 32 px for the monogram; 120 px for the complete lockup.
-- Clear space: at least half the monogram width on every side.
+**Mark — "Answer Pin"（答案定位针）**
+
+A location-pin silhouette with a pair of quotation marks knocked out of it. Three readings in one shape:
+
+1. **Geo** — the pin is the universal "you are here" symbol, reinforcing the name.
+2. **Cited** — the quotation marks mean "you got quoted", which is exactly what GEO delivers.
+3. **Answer** — the rounded head with a tapering point also reads as a speech bubble.
+
+- The counter is a true `fill-rule="evenodd"` knockout, not a filled shape. The mark therefore
+  works on any background without a light/dark variant.
+- Files: `assets/logo.svg` (gradient), `assets/logo-mono.svg` (`currentColor`),
+  `favicon.svg`, `favicon.ico` (16/32/48), `apple-touch-icon.png` (180), `assets/icon-tile.svg`.
+- Lockup: mark + `GeoWorthy` wordmark + descriptor (`被AI推荐 · AI VISIBILITY` / `AI VISIBILITY`).
+- Minimum digital size: 16 px for the mark alone; 120 px for the complete lockup.
+  Legibility was verified at 16 / 24 / 48 / 96 px before adoption.
+- Clear space: at least half the mark width on every side.
+- Do not use emoji, add drop shadows beyond the current `drop-shadow` glow, fill the quotation
+  counters with a solid colour, or substitute another icon.
 
 ## Color systems
 
@@ -32,9 +45,9 @@ GeoWorthy means “worthy of being found and recommended.” The identity combin
 
 ## Typography
 
-- Wordmark and interface: system sans-serif, extra-bold, tight tracking.
+- Wordmark and interface: system sans-serif, extra-bold, tight tracking (-0.035em).
 - Editorial headlines on the English page: Georgia or a compatible serif.
-- Monogram: Georgia Bold.
+- The mark is pure geometry, no typeface dependency.
 
 ## Motion
 

@@ -1,7 +1,13 @@
+# geoworthy.com · robots.txt
+# 我们是做 GEO 的，自己的站当然对所有爬虫（含 AI 训练与 AI 检索）完全开放。
+# 全站无 Disallow —— 下面的逐条 Allow 是显式表态，不是限制。
+# 说明：Google-Extended 与 Applebot-Extended 是「AI 训练用途」的独立开关，
+# 不写等于默认不授权，所以必须显式写出来。
+
 User-agent: *
 Allow: /
 
-# 明确欢迎 AI 爬虫抓取（GEO 服务商自身应对 AI 友好）
+# ---------- OpenAI ----------
 User-agent: GPTBot
 Allow: /
 
@@ -11,7 +17,14 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
+# ---------- Anthropic ----------
 User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: Claude-Web
@@ -20,13 +33,87 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
+# ---------- Google ----------
+User-agent: Googlebot
+Allow: /
+
 User-agent: Google-Extended
 Allow: /
 
+User-agent: Google-CloudVertexBot
+Allow: /
+
+User-agent: GoogleOther
+Allow: /
+
+# ---------- Microsoft / Bing / Copilot ----------
+User-agent: Bingbot
+Allow: /
+
+User-agent: BingPreview
+Allow: /
+
+# ---------- Apple ----------
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# ---------- Perplexity ----------
 User-agent: PerplexityBot
 Allow: /
 
+User-agent: Perplexity-User
+Allow: /
+
+# ---------- Meta ----------
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: meta-externalfetcher
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# ---------- Amazon / Mistral / Cohere / DuckDuckGo / You ----------
+User-agent: Amazonbot
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: cohere-training-data-crawler
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: YouBot
+Allow: /
+
+# ---------- 公共训练语料 ----------
+User-agent: CCBot
+Allow: /
+
+User-agent: omgili
+Allow: /
+
+User-agent: Diffbot
+Allow: /
+
+User-agent: Timpibot
+Allow: /
+
+# ---------- 中文平台（字节/百度/阿里/腾讯/华为/搜狗/神马/360）----------
 User-agent: Bytespider
+Allow: /
+
+User-agent: ByteSpider
 Allow: /
 
 User-agent: Baiduspider
@@ -35,4 +122,20 @@ Allow: /
 User-agent: Sogou web spider
 Allow: /
 
+User-agent: PetalBot
+Allow: /
+
+User-agent: YisouSpider
+Allow: /
+
+User-agent: 360Spider
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# ---------- 给大模型的结构化事实 ----------
+# llms.txt 规范：https://llmstxt.org/
+# llms.txt      —— 摘要版，适合塞进上下文
+# llms-full.txt —— 完整版，含全部 FAQ、术语表与交付定义
 Sitemap: https://geoworthy.com/sitemap.xml
