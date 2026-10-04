@@ -476,6 +476,16 @@ nav{
 .gl-item dt{font-weight:700;font-size:15px;color:var(--tx);margin-bottom:8px}
 .gl-item dt span{color:var(--tx-3);font-weight:500;font-size:13px}
 .gl-item dd{margin:0;color:var(--tx-2);font-size:14.5px;line-height:1.7}
+.hub{margin-top:52px;padding-top:44px;border-top:1px solid var(--line)}
+.hub-head{text-align:center;margin-bottom:30px}
+.hub-head h3{font-size:clamp(22px,3vw,28px);font-weight:700;letter-spacing:-.02em;margin-bottom:10px}
+.hub-head p{color:var(--tx-2);font-size:16px}
+.hub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(282px,1fr));gap:16px}
+.hub-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;transition:.2s}
+.hub-card:hover{border-color:var(--ac);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.28)}
+.hub-card b{font-size:17px;margin-bottom:10px;color:var(--tx)}
+.hub-card span{font-size:14.5px;color:var(--tx-2);line-height:1.7;flex:1}
+.hub-card i{font-style:normal;font-size:13px;color:var(--ac);font-weight:600;margin-top:16px}
 .updated{font-size:13px;color:var(--tx-3)}
 @media(max-width:640px){.definition{padding:22px 20px}.definition p{font-size:16px}}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
@@ -717,7 +727,7 @@ footer{border-top:1px solid var(--line);padding:50px 0 36px;background:var(--bg-
   <div class="nav-in">
     <a href="#" class="logo" aria-label="GeoWorthy 首页"><span class="logo-mark"><svg class="gw-mark" viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="url(#gwGrad)" fill-rule="evenodd" d="M24 2.5C14.1 2.5 6 10.6 6 20.5c0 12.4 15.9 24.2 16.6 24.7a2.4 2.4 0 0 0 2.8 0C26.1 44.7 42 32.9 42 20.5 42 10.6 33.9 2.5 24 2.5Z M14.2 12.8h6.6v6.6c0 3.9-2.2 6.6-6 7.8l-1.5-3.1c2-.8 3.1-1.8 3.3-3.3h-2.4z M27.2 12.8h6.6v6.6c0 3.9-2.2 6.6-6 7.8l-1.5-3.1c2-.8 3.1-1.8 3.3-3.3h-2.4z"/></svg></span><span class="logo-copy">GeoWorthy<small>AI visibility</small></span></a>
     <div class="nav-links">
-      <a href="#what-is-geo">GEO 是什么</a><a href="#problem">为什么需要</a>
+      <a href="/geo-guide.html">完整指南</a><a href="/geo-benchmark.html">评测标准</a><a href="#problem">为什么需要</a>
       <a href="#how">怎么做</a>
       <a href="./en.html">海外商家</a>
       <a href="#pricing">价格</a>
@@ -769,7 +779,7 @@ footer{border-top:1px solid var(--line);padding:50px 0 36px;background:var(--bg-
 
     <div class="definition">
       <p><span class="term">GEO（Generative Engine Optimization，生成引擎优化）</span>是让一个品牌或个人，在 ChatGPT、Claude、Gemini、DeepSeek、豆包等生成式 AI 的回答中<strong>被正确识别、被准确描述、并被推荐</strong>的优化实践。它优化的不是搜索结果的排名，而是 <strong>AI 在生成答案时引用了谁、怎么说</strong>。</p>
-      <p>GEO 也被称为 AEO（Answer Engine Optimization，答案引擎优化）或 AI 搜索优化。它<strong>不是</strong>「把资料提交给大模型收录」——大模型没有这个机制。它真正的工作对象是：AI 联网检索时能查到什么、查到的信息是否一致、是否结构化到足以被直接引用。</p>
+      <p>GEO 也被称为 AEO（Answer Engine Optimization，答案引擎优化）或 AI 搜索优化。它<strong>不是</strong>「把资料提交给大模型收录」——大模型没有这个机制。它真正的工作对象是：AI 联网检索时能查到什么、查到的信息是否一致、是否结构化到足以被直接引用。 <a href="/geo-guide.html" style="color:var(--ac);font-weight:600">读完整指南 →</a></p>
     </div>
 
     <div class="cmp-scroll">
@@ -815,6 +825,36 @@ footer{border-top:1px solid var(--line);padding:50px 0 36px;background:var(--bg-
         <dd>放在网站根目录、专门写给大语言模型看的纯文本摘要文件，规范见 llmstxt.org。本站的在 <a href="/llms.txt" style="color:var(--ac)">/llms.txt</a>。</dd>
       </div>
     </dl>
+
+    <div class="hub">
+      <div class="hub-head">
+        <span class="eyebrow" style="margin-bottom:12px">GEO 知识库</span>
+        <h3>想把 GEO 一次搞懂？</h3>
+        <p>我们把自己在用的方法、口径和评测标准全部公开了，免费，不用留资。</p>
+      </div>
+      <div class="hub-grid">
+        <a href="/geo-guide.html" class="hub-card">
+          <b>GEO 完整指南</b>
+          <span>定义、原理、模型决定推荐谁的三条路径、五步做法、7 种骗局、30 项自检清单。引用 KDD 2024 原始论文。</span>
+          <i>约 25 分钟 →</i>
+        </a>
+        <a href="/geo-benchmark.html" class="hub-card">
+          <b>GEO 可见度评测标准 v1.0</b>
+          <span>22 条标准提问集、0/1/2 打分口径、五项指标计算公式。CC BY 4.0 开放授权，同行也能用。</span>
+          <i>可自行复现 →</i>
+        </a>
+        <a href="/geo-vs-seo.html" class="hub-card">
+          <b>GEO 与 SEO 的区别</b>
+          <span>八项核心差异、哪些工作重叠、预算怎么分、先做哪个，附一张对号入座的判断表。</span>
+          <i>约 9 分钟 →</i>
+        </a>
+        <a href="/geo-glossary.html" class="hub-card">
+          <b>GEO 术语词典</b>
+          <span>35 个术语的精确定义，分核心概念、衡量指标、技术要素、AI 爬虫、方法风险五类，中英对照。</span>
+          <i>35 条 →</i>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1195,6 +1235,13 @@ footer{border-top:1px solid var(--line);padding:50px 0 36px;background:var(--bg-
           <a href="#pricing">持续监测</a>
         </div>
         <div class="foot-col">
+          <h4>GEO 知识库</h4>
+          <a href="/geo-guide.html">完整指南</a>
+          <a href="/geo-benchmark.html">评测标准</a>
+          <a href="/geo-vs-seo.html">GEO vs SEO</a>
+          <a href="/geo-glossary.html">术语词典</a>
+        </div>
+        <div class="foot-col">
           <h4>了解</h4>
           <a href="#problem">为什么需要 GEO</a>
           <a href="#how">服务流程</a>
@@ -1204,7 +1251,7 @@ footer{border-top:1px solid var(--line);padding:50px 0 36px;background:var(--bg-
       </div>
     </div>
     <div class="copy">
-      <span>© 2026 被AI推荐 GeoWorthy · <span class="updated">最后更新 <time datetime="2026-09-26">2026 年 9 月 26 日</time></span></span>
+      <span>© 2026 被AI推荐 GeoWorthy · <span class="updated">最后更新 <time datetime="2026-10-05">2026 年 10 月 5 日</time></span></span>
       <span>本服务为信息优化服务，不代表与所列 AI 平台存在合作或授权关系</span>
     </div>
   </div>

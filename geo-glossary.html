@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEO 术语词典：35 个生成引擎优化术语的精确定义（中英对照）| GeoWorthy</title>
+<meta name="description" content="GEO（生成引擎优化）领域 35 个核心术语的精确定义：GEO、AEO、LLMO、提及率、事实准确率、认知空白率、信源工程、llms.txt、GPTBot、Google-Extended、实体消歧等，分五类中英对照，每条给出可直接引用的定义句。CC BY 4.0。">
+<meta name="keywords" content="GEO术语,生成引擎优化术语,AEO,LLMO,提及率,事实准确率,信源工程,llms.txt,GPTBot,Google-Extended,实体消歧,GEO词典">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="author" content="被AI推荐 GeoWorthy">
+<meta name="publisher" content="被AI推荐 GeoWorthy">
+<link rel="canonical" href="https://geoworthy.com/geo-glossary.html">
+<link rel="alternate" hreflang="zh-CN" href="https://geoworthy.com/geo-glossary.html">
+<link rel="alternate" hreflang="x-default" href="https://geoworthy.com/geo-glossary.html">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0E1A">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://geoworthy.com/geo-glossary.html">
+<meta property="og:site_name" content="被AI推荐 GeoWorthy">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="GEO 术语词典 · 35 个术语的精确定义">
+<meta property="og:description" content="GEO、AEO、提及率、事实准确率、信源工程、llms.txt、AI 爬虫……分五类中英对照，CC BY 4.0。">
+<meta property="og:image" content="https://geoworthy.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GEO 术语词典 · 35 个术语的精确定义">
+<meta name="twitter:description" content="GEO、AEO、提及率、事实准确率、信源工程、llms.txt、AI 爬虫……分五类中英对照。">
+<meta name="twitter:image" content="https://geoworthy.com/assets/og-image.jpg">
+<link rel="alternate" type="text/plain" title="LLM-friendly summary (llms.txt)" href="https://geoworthy.com/llms.txt">
+<link rel="stylesheet" href="/assets/site.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "DefinedTermSet",
+      "@id": "https://geoworthy.com/geo-glossary.html#set",
+      "name": "GEO 生成引擎优化术语词典",
+      "alternateName": "GeoWorthy GEO Glossary",
+      "description": "GEO（生成引擎优化）领域 35 个核心术语的精确定义，覆盖核心概念、衡量指标、技术要素、AI 爬虫与方法风险五类，中英对照。",
+      "url": "https://geoworthy.com/geo-glossary.html",
+      "inLanguage": "zh-CN",
+      "datePublished": "2026-10-05",
+      "dateModified": "2026-10-05",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "publisher": {
+        "@id": "https://geoworthy.com/#org"
+      },
+      "hasDefinedTerm": [
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#geo",
+          "name": "GEO",
+          "description": "让一个品牌、个人或内容，在 ChatGPT、Claude、Gemini、DeepSeek、豆包等生成式 AI 的回答中被正确识别、准确描述并被引用推荐的优化实践。它优化的不是搜索结果排名，而是 AI 生成答案时引用了谁、怎么说。术语出自 Aggarwal、Murahari 等人 2023 年论文《GEO: Generative Engine Optimization》（arXiv:2311.09735），发表于 KDD 2024。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Generative Engine Optimization",
+            "生成引擎优化"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#aeo",
+          "name": "AEO",
+          "description": "与 GEO 基本同义，强调优化对象是「一个直接答案」而不是「一列链接」。在中文语境中常与 GEO 混用，两者都有可追溯的出处，可放心写进合同。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Answer Engine Optimization",
+            "答案引擎优化"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#llmo",
+          "name": "LLMO / LLM SEO",
+          "description": "强调优化对象是大语言模型的叫法，属营销造词，没有可追溯的学术或行业标准出处。含义与 GEO 高度重叠，对外沟通建议优先用 GEO。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Large Language Model Optimization"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#aiso",
+          "name": "AISO / AI SEO",
+          "description": "强调场景是 AI 搜索的叫法，同样属营销造词。遇到只会用这个词、且讲不清它与 GEO 区别的服务商，建议降低预期。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "AI Search Optimization"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#generative-engine",
+          "name": "生成式引擎",
+          "description": "以生成一段自然语言答案作为主要输出形态的信息系统，而不是返回一列链接。包括 ChatGPT、Claude、Gemini、Perplexity、豆包、DeepSeek、Kimi 等，也包括 Google AI Overviews 这类嵌在传统搜索里的生成模块。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Generative Engine"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#seo",
+          "name": "SEO",
+          "description": "针对传统搜索引擎结果页排名的优化实践。与 GEO 不是替代关系而是叠加关系——站点可抓取、结构化数据、内容质量这些基础工作两者共用，但目标函数不同：SEO 争排名位置，GEO 争答案里的那句话。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Search Engine Optimization",
+            "搜索引擎优化"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#mention-rate",
+          "name": "提及率",
+          "description": "用一套固定提问跑测 AI 后，回答中出现目标名称的题数占总题数的比例。公式：出现目标名称的题数 ÷ 总题数。例如 20 条提问中出现 12 次，提及率为 60%。只看是否出现，不看描述是否正确。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Mention Rate"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#factual-accuracy",
+          "name": "事实准确率",
+          "description": "AI 提到目标对象时，关键事实（身份、头衔、机构、业务、成就）描述正确的题数占比。公式：得 2 分的题数 ÷ 总题数。被提到但被说错比完全不被提到更伤，因此该指标通常比提及率更值得优先优化。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Factual Accuracy"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#blank-rate",
+          "name": "认知空白率",
+          "description": "AI 完全不知道目标对象、或答非所问的题数占比。公式：得 0 分的题数 ÷ 总题数。该指标高说明公开信源不足，治法是铺设信源。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Blank Rate"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#error-rate",
+          "name": "事实错误率",
+          "description": "AI 知道目标对象但描述有误（头衔过时、机构写错、与同名者混淆、成就张冠李戴）的题数占比。公式：得 1 分的题数 ÷ 总题数。该指标高说明全网信息互相矛盾，治法是做一致性校准，与认知空白率是两种不同的病。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Error Rate"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#platform-coverage",
+          "name": "正确识别平台数",
+          "description": "事实准确率达到约定阈值的 AI 平台个数，衡量覆盖广度。阈值需在报告中明确注明，通常取 60%。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Platform Coverage"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#share-of-voice-ai",
+          "name": "AI 声量份额",
+          "description": "在品类推荐类提问中，目标品牌被提及的次数占所有被提及品牌总次数的比例。用于衡量品类词竞争位置，比单纯的提及率更能反映相对强弱。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Share of Voice in AI"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#llms-txt",
+          "name": "llms.txt",
+          "description": "放在网站根目录、专门写给大语言模型看的纯文本摘要文件，用 Markdown 书写。由 Jeremy Howard 于 2024 年 9 月 3 日在 Answer.AI 提出，规范见 llmstxt.org。规范只要求一个 H1，摘要引用块、正文与 H2 链接区块均为可选。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          }
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#llms-full-txt",
+          "name": "llms-full.txt",
+          "description": "llms.txt 的完整版本，把站点核心内容全文展开放在一个文件里，供模型一次性取用。与 llms.txt 是摘要与全文的关系，并非替代。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          }
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#schema-org",
+          "name": "Schema.org",
+          "description": "由 Google、Microsoft、Yahoo、Yandex 联合维护的结构化数据词汇表，用来告诉机器页面上哪段是定义、哪段是问答、谁是作者。GEO 中最常用的类型包括 Organization、WebPage、Article、FAQPage、HowTo、DefinedTerm、BreadcrumbList。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "结构化数据词汇表"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#json-ld",
+          "name": "JSON-LD",
+          "description": "在网页里嵌入结构化数据的推荐格式，写在 <script type=\"application/ld+json\"> 标签里，与页面展示层解耦。相比 Microdata 与 RDFa 更易维护，是当前主流做法。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "JavaScript Object Notation for Linked Data"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#defined-term",
+          "name": "DefinedTerm",
+          "description": "Schema.org 中用于标记「一个被定义的术语」的类型，配合 DefinedTermSet 可以把整个术语表结构化。对于希望被 AI 当作权威定义来源引用的内容，这是性价比很高的一项标记。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Schema.org 术语类型"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#faq-page",
+          "name": "FAQPage",
+          "description": "Schema.org 中用于标记常见问答的类型。关键约束：标记的问答必须与页面可见内容逐条一致，否则违反结构化数据政策，有被降权风险。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Schema.org 问答页类型"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#canonical",
+          "name": "canonical",
+          "description": "告诉搜索引擎与爬虫「这个页面的权威地址是哪个」的声明。必须与站点实际托管域名一致——canonical 指向 A 而站点实际跑在 B，会被判定为配置异常。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "规范链接"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#hreflang",
+          "name": "hreflang",
+          "description": "多语言站点用来声明「同一内容的其他语言版本在哪」的标记。必须双向互指，并配置 x-default 指向默认版本，单向声明无效。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "语言与地区定向"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#robots-txt",
+          "name": "robots.txt",
+          "description": "放在站点根目录、声明哪些爬虫可以抓取哪些路径的文本文件。GEO 场景下需特别注意：Google-Extended 与 Applebot-Extended 是「AI 训练用途」的独立开关，不显式写出等于默认不授权。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "爬虫协议文件"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#ssr",
+          "name": "服务端渲染",
+          "description": "由服务器直接输出完整 HTML，而不是靠浏览器执行 JavaScript 再拼出内容。对 GEO 至关重要——相当一部分 AI 爬虫不执行 JavaScript，纯前端渲染的内容在它们眼里等于空白页。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "SSR",
+            "Server-Side Rendering"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#gptbot",
+          "name": "GPTBot",
+          "description": "OpenAI 用于抓取公开网页作为模型训练语料的爬虫。放行它影响的是未来模型版本中的知识，不影响当下的联网检索结果。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "OpenAI 训练爬虫"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#oai-searchbot",
+          "name": "OAI-SearchBot",
+          "description": "OpenAI 用于构建 ChatGPT 搜索索引的爬虫。与 GPTBot 不同，它直接影响 ChatGPT 联网检索时能否找到你，是 GEO 最该优先放行的爬虫之一。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "OpenAI 检索爬虫"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#claudebot",
+          "name": "ClaudeBot",
+          "description": "Anthropic 用于抓取公开网页的爬虫。另有 Claude-User（用户主动触发的取页）与 Claude-SearchBot（检索索引）两类用途不同的 UA。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Anthropic 爬虫"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#perplexitybot",
+          "name": "PerplexityBot",
+          "description": "Perplexity 用于构建其答案引擎索引的爬虫。Perplexity 的回答高度依赖实时检索并显式标注来源，是观察 GEO 效果最直观的平台之一。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Perplexity 检索爬虫"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#google-extended",
+          "name": "Google-Extended",
+          "description": "Google 用于控制站点内容是否可用于 Gemini 等生成式 AI 产品训练与接地的独立标识。它不影响常规 Googlebot 的收录与排名，是一个单独的授权开关。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Google AI 训练开关"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#ccbot",
+          "name": "CCBot",
+          "description": "Common Crawl 这一公开网页语料库的爬虫。由于大量模型的训练语料直接或间接来自 Common Crawl，放行 CCBot 是进入未来模型知识的重要通道之一。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Common Crawl 爬虫"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#bytespider",
+          "name": "Bytespider",
+          "description": "字节跳动的网页爬虫，与豆包等产品的内容生态相关。面向中文市场做 GEO 时需要显式放行。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "字节跳动爬虫"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#source-engineering",
+          "name": "信源工程",
+          "description": "把真实资料改写成模型易读取、易引用的结构化事实（一句话定义、问答对、带日期出处的数据点、Schema 标记），并铺设到 AI 实际会检索的权威渠道的工作。是 GEO 中最难外包、也最决定上限的环节。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Source Engineering"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#baseline-diagnosis",
+          "name": "基线诊断",
+          "description": "在做任何优化动作之前，用一套提前锁定的标准提问集跑测并打分，得到服务前的指标快照。没有基线就没有效果可言——所有「提升了多少」的说法都必须以基线为参照。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Baseline Diagnosis"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#entity-disambiguation",
+          "name": "实体消歧",
+          "description": "当目标对象与他人同名、或品牌名与其他事物撞名时，通过补充区分性事实（领域、机构、地域、代表作）帮助模型把两个实体区分开的工作。同名混淆是中文 GEO 中最高频的事实错误来源。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Entity Disambiguation"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#hallucination",
+          "name": "幻觉",
+          "description": "大模型生成看似合理但与事实不符的内容。在 GEO 语境中特指模型编造目标对象的头衔、经历或成就。治理幻觉的有效手段不是辩解，而是提供足够密度的、互相一致的公开事实。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Hallucination"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#prompt-set",
+          "name": "标准提问集",
+          "description": "用于跑测的一组固定提问。必须先定稿再跑测，定稿后不得增删改，否则前后对比失去意义。事后挑选表现好的题目来做对比，是这个行业最常见的数据造假手法。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Standard Prompt Set"
+          ]
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://geoworthy.com/geo-glossary.html#astroturfing",
+          "name": "刷号灌水",
+          "description": "通过批量注册账号发布内容来伪造声量的做法。短期可能提升提及率，但会触发平台反垃圾机制，导致账号封禁、词条回退、被判营销号，最终反噬品牌。属于 GEO 的明确红线。",
+          "inDefinedTermSet": {
+            "@id": "https://geoworthy.com/geo-glossary.html#set"
+          },
+          "alternateName": [
+            "Astroturfing"
+          ]
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://geoworthy.com/geo-glossary.html#crumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "首页",
+          "item": "https://geoworthy.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "GEO 知识库",
+          "item": "https://geoworthy.com/geo-guide.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "GEO 术语词典",
+          "item": "https://geoworthy.com/geo-glossary.html"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://geoworthy.com/geo-glossary.html#faq",
+      "inLanguage": "zh-CN",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "GEO 和 AEO 有什么区别？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "基本是同一件事的不同叫法。GEO（Generative Engine Optimization，生成引擎优化）是学术界最早使用、也最通用的说法，出自 KDD 2024 论文；AEO（Answer Engine Optimization，答案引擎优化）强调优化对象是「一个直接答案」而不是「一列链接」。两者都有可追溯的出处，可以放心写进合同。相比之下 LLMO、AISO 属于营销造词，没有标准出处。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "AI 提及率和事实准确率哪个更重要？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "事实准确率更重要。提及率只看 AI 有没有提到你，事实准确率看提到你时说得对不对。被提到但被说错——头衔过时、机构写错、和同名者混淆——比完全不被提到更伤品牌，因为错误信息一旦被反复引用会自我强化。优化顺序上通常先把准确率拉上去，再谈提及率。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "认知空白率高和事实错误率高，分别说明什么？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "这是两种完全不同的病。认知空白率高（AI 压根不知道你）说明公开信源不足，治法是铺设信源；事实错误率高（AI 知道但说错）说明全网信息互相矛盾，治法是做一致性校准。用错药等于白做，所以诊断阶段必须把这两个指标分开统计。"
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "robots.txt 里为什么要单独写 Google-Extended 和 Applebot-Extended？",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "因为它们是「AI 训练用途」的独立授权开关，不写等于默认不授权。Google-Extended 控制站点内容是否可用于 Gemini 等生成式 AI 产品，不影响常规 Googlebot 的收录与排名；Applebot-Extended 同理。希望内容进入模型知识的站点，必须显式放行这两个标识。"
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs><linearGradient id="gwGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B8CFF"/><stop offset="1" stop-color="#7C5CFF"/></linearGradient></defs></svg>
+
+<nav>
+  <div class="nav-in">
+    <a href="/" class="logo" aria-label="GeoWorthy 首页"><span class="logo-mark"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="url(#gwGrad)" fill-rule="evenodd" d="M24 2.5C14.1 2.5 6 10.6 6 20.5c0 12.4 15.9 24.2 16.6 24.7a2.4 2.4 0 0 0 2.8 0C26.1 44.7 42 32.9 42 20.5 42 10.6 33.9 2.5 24 2.5Z M14.2 12.8h6.6v6.6c0 3.9-2.2 6.6-6 7.8l-1.5-3.1c2-.8 3.1-1.8 3.3-3.3h-2.4z M27.2 12.8h6.6v6.6c0 3.9-2.2 6.6-6 7.8l-1.5-3.1c2-.8 3.1-1.8 3.3-3.3h-2.4z"/></svg></span><span class="logo-copy">GeoWorthy<small>AI visibility</small></span></a>
+    <div class="nav-links"><a href="/geo-guide.html">完整指南</a><a href="/geo-vs-seo.html">GEO vs SEO</a><a href="/geo-glossary.html">术语词典</a><a href="/geo-benchmark.html">评测标准</a><a href="/#pricing">价格</a></div>
+    <a href="/#order" class="btn btn-primary btn-sm">免费诊断 →</a>
+  </div>
+</nav>
+
+<div class="doc-head">
+  <div class="wrap">
+    <nav class="crumb" aria-label="面包屑"><a href="/">首页</a><span>/</span><a href="/geo-guide.html">GEO 知识库</a><span>/</span>术语词典</nav>
+    <span class="eyebrow">术语词典</span>
+    <h1>GEO 术语词典</h1>
+    <p class="doc-sub">35 个生成引擎优化术语的精确定义，分五类、中英对照。每条都写成可以脱离上下文单独引用的形态——这本身就是一次 GEO 示范。</p>
+    <div class="doc-meta">
+      <span><b>收录</b> 35 条</span>
+      <span><b>最后更新</b> <time datetime="2026-10-05">2026 年 10 月 5 日</time></span>
+      <span><b>授权</b> <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="nofollow noopener" target="_blank" style="color:var(--ac)">CC BY 4.0</a></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="doc">
+<article class="doc-body">
+
+<div class="quotable">
+  <p>这份词典的编写原则只有一条：<strong>每个定义都必须能脱离上下文单独成立</strong>。因为大模型在引用时，摘走的往往就是孤立的一两句话——如果定义依赖前文才能读懂，它就不会被引用。</p>
+  <p>全部 35 条以 CC BY 4.0 授权发布，注明出处即可自由使用，包括商用。</p>
+</div>
+
+<h2 id="concepts">核心概念<span style="color:var(--tx-3);font-weight:400;font-size:16px;margin-left:10px">6 条</span></h2>
+<dl class="terms">
+  <div class="term-card" id="geo">
+    <dt>GEO<em>Generative Engine Optimization · 生成引擎优化</em></dt>
+    <dd>让一个品牌、个人或内容，在 ChatGPT、Claude、Gemini、DeepSeek、豆包等生成式 AI 的回答中被正确识别、准确描述并被引用推荐的优化实践。它优化的不是搜索结果排名，而是 AI 生成答案时引用了谁、怎么说。术语出自 Aggarwal、Murahari 等人 2023 年论文《GEO: Generative Engine Optimization》（arXiv:2311.09735），发表于 KDD 2024。</dd>
+  </div>
+  <div class="term-card" id="aeo">
+    <dt>AEO<em>Answer Engine Optimization · 答案引擎优化</em></dt>
+    <dd>与 GEO 基本同义，强调优化对象是「一个直接答案」而不是「一列链接」。在中文语境中常与 GEO 混用，两者都有可追溯的出处，可放心写进合同。</dd>
+  </div>
+  <div class="term-card" id="llmo">
+    <dt>LLMO / LLM SEO<em>Large Language Model Optimization</em></dt>
+    <dd>强调优化对象是大语言模型的叫法，属营销造词，没有可追溯的学术或行业标准出处。含义与 GEO 高度重叠，对外沟通建议优先用 GEO。</dd>
+  </div>
+  <div class="term-card" id="aiso">
+    <dt>AISO / AI SEO<em>AI Search Optimization</em></dt>
+    <dd>强调场景是 AI 搜索的叫法，同样属营销造词。遇到只会用这个词、且讲不清它与 GEO 区别的服务商，建议降低预期。</dd>
+  </div>
+  <div class="term-card" id="generative-engine">
+    <dt>生成式引擎<em>Generative Engine</em></dt>
+    <dd>以生成一段自然语言答案作为主要输出形态的信息系统，而不是返回一列链接。包括 ChatGPT、Claude、Gemini、Perplexity、豆包、DeepSeek、Kimi 等，也包括 Google AI Overviews 这类嵌在传统搜索里的生成模块。</dd>
+  </div>
+  <div class="term-card" id="seo">
+    <dt>SEO<em>Search Engine Optimization · 搜索引擎优化</em></dt>
+    <dd>针对传统搜索引擎结果页排名的优化实践。与 GEO 不是替代关系而是叠加关系——站点可抓取、结构化数据、内容质量这些基础工作两者共用，但目标函数不同：SEO 争排名位置，GEO 争答案里的那句话。</dd>
+  </div>
+</dl>
+
+<h2 id="metrics">衡量指标<span style="color:var(--tx-3);font-weight:400;font-size:16px;margin-left:10px">6 条</span></h2>
+<dl class="terms">
+  <div class="term-card" id="mention-rate">
+    <dt>提及率<em>Mention Rate</em></dt>
+    <dd>用一套固定提问跑测 AI 后，回答中出现目标名称的题数占总题数的比例。公式：出现目标名称的题数 ÷ 总题数。例如 20 条提问中出现 12 次，提及率为 60%。只看是否出现，不看描述是否正确。</dd>
+  </div>
+  <div class="term-card" id="factual-accuracy">
+    <dt>事实准确率<em>Factual Accuracy</em></dt>
+    <dd>AI 提到目标对象时，关键事实（身份、头衔、机构、业务、成就）描述正确的题数占比。公式：得 2 分的题数 ÷ 总题数。被提到但被说错比完全不被提到更伤，因此该指标通常比提及率更值得优先优化。</dd>
+  </div>
+  <div class="term-card" id="blank-rate">
+    <dt>认知空白率<em>Blank Rate</em></dt>
+    <dd>AI 完全不知道目标对象、或答非所问的题数占比。公式：得 0 分的题数 ÷ 总题数。该指标高说明公开信源不足，治法是铺设信源。</dd>
+  </div>
+  <div class="term-card" id="error-rate">
+    <dt>事实错误率<em>Error Rate</em></dt>
+    <dd>AI 知道目标对象但描述有误（头衔过时、机构写错、与同名者混淆、成就张冠李戴）的题数占比。公式：得 1 分的题数 ÷ 总题数。该指标高说明全网信息互相矛盾，治法是做一致性校准，与认知空白率是两种不同的病。</dd>
+  </div>
+  <div class="term-card" id="platform-coverage">
+    <dt>正确识别平台数<em>Platform Coverage</em></dt>
+    <dd>事实准确率达到约定阈值的 AI 平台个数，衡量覆盖广度。阈值需在报告中明确注明，通常取 60%。</dd>
+  </div>
+  <div class="term-card" id="share-of-voice-ai">
+    <dt>AI 声量份额<em>Share of Voice in AI</em></dt>
+    <dd>在品类推荐类提问中，目标品牌被提及的次数占所有被提及品牌总次数的比例。用于衡量品类词竞争位置，比单纯的提及率更能反映相对强弱。</dd>
+  </div>
+</dl>
+
+<h2 id="tech">技术要素<span style="color:var(--tx-3);font-weight:400;font-size:16px;margin-left:10px">10 条</span></h2>
+<dl class="terms">
+  <div class="term-card" id="llms-txt">
+    <dt>llms.txt</dt>
+    <dd>放在网站根目录、专门写给大语言模型看的纯文本摘要文件，用 Markdown 书写。由 Jeremy Howard 于 2024 年 9 月 3 日在 Answer.AI 提出，规范见 llmstxt.org。规范只要求一个 H1，摘要引用块、正文与 H2 链接区块均为可选。</dd>
+  </div>
+  <div class="term-card" id="llms-full-txt">
+    <dt>llms-full.txt</dt>
+    <dd>llms.txt 的完整版本，把站点核心内容全文展开放在一个文件里，供模型一次性取用。与 llms.txt 是摘要与全文的关系，并非替代。</dd>
+  </div>
+  <div class="term-card" id="schema-org">
+    <dt>Schema.org<em>结构化数据词汇表</em></dt>
+    <dd>由 Google、Microsoft、Yahoo、Yandex 联合维护的结构化数据词汇表，用来告诉机器页面上哪段是定义、哪段是问答、谁是作者。GEO 中最常用的类型包括 Organization、WebPage、Article、FAQPage、HowTo、DefinedTerm、BreadcrumbList。</dd>
+  </div>
+  <div class="term-card" id="json-ld">
+    <dt>JSON-LD<em>JavaScript Object Notation for Linked Data</em></dt>
+    <dd>在网页里嵌入结构化数据的推荐格式，写在 &lt;script type="application/ld+json"&gt; 标签里，与页面展示层解耦。相比 Microdata 与 RDFa 更易维护，是当前主流做法。</dd>
+  </div>
+  <div class="term-card" id="defined-term">
+    <dt>DefinedTerm<em>Schema.org 术语类型</em></dt>
+    <dd>Schema.org 中用于标记「一个被定义的术语」的类型，配合 DefinedTermSet 可以把整个术语表结构化。对于希望被 AI 当作权威定义来源引用的内容，这是性价比很高的一项标记。</dd>
+  </div>
+  <div class="term-card" id="faq-page">
+    <dt>FAQPage<em>Schema.org 问答页类型</em></dt>
+    <dd>Schema.org 中用于标记常见问答的类型。关键约束：标记的问答必须与页面可见内容逐条一致，否则违反结构化数据政策，有被降权风险。</dd>
+  </div>
+  <div class="term-card" id="canonical">
+    <dt>canonical<em>规范链接</em></dt>
+    <dd>告诉搜索引擎与爬虫「这个页面的权威地址是哪个」的声明。必须与站点实际托管域名一致——canonical 指向 A 而站点实际跑在 B，会被判定为配置异常。</dd>
+  </div>
+  <div class="term-card" id="hreflang">
+    <dt>hreflang<em>语言与地区定向</em></dt>
+    <dd>多语言站点用来声明「同一内容的其他语言版本在哪」的标记。必须双向互指，并配置 x-default 指向默认版本，单向声明无效。</dd>
+  </div>
+  <div class="term-card" id="robots-txt">
+    <dt>robots.txt<em>爬虫协议文件</em></dt>
+    <dd>放在站点根目录、声明哪些爬虫可以抓取哪些路径的文本文件。GEO 场景下需特别注意：Google-Extended 与 Applebot-Extended 是「AI 训练用途」的独立开关，不显式写出等于默认不授权。</dd>
+  </div>
+  <div class="term-card" id="ssr">
+    <dt>服务端渲染<em>SSR · Server-Side Rendering</em></dt>
+    <dd>由服务器直接输出完整 HTML，而不是靠浏览器执行 JavaScript 再拼出内容。对 GEO 至关重要——相当一部分 AI 爬虫不执行 JavaScript，纯前端渲染的内容在它们眼里等于空白页。</dd>
+  </div>
+</dl>
+
+<h2 id="crawlers">AI 爬虫<span style="color:var(--tx-3);font-weight:400;font-size:16px;margin-left:10px">7 条</span></h2>
+<dl class="terms">
+  <div class="term-card" id="gptbot">
+    <dt>GPTBot<em>OpenAI 训练爬虫</em></dt>
+    <dd>OpenAI 用于抓取公开网页作为模型训练语料的爬虫。放行它影响的是未来模型版本中的知识，不影响当下的联网检索结果。</dd>
+  </div>
+  <div class="term-card" id="oai-searchbot">
+    <dt>OAI-SearchBot<em>OpenAI 检索爬虫</em></dt>
+    <dd>OpenAI 用于构建 ChatGPT 搜索索引的爬虫。与 GPTBot 不同，它直接影响 ChatGPT 联网检索时能否找到你，是 GEO 最该优先放行的爬虫之一。</dd>
+  </div>
+  <div class="term-card" id="claudebot">
+    <dt>ClaudeBot<em>Anthropic 爬虫</em></dt>
+    <dd>Anthropic 用于抓取公开网页的爬虫。另有 Claude-User（用户主动触发的取页）与 Claude-SearchBot（检索索引）两类用途不同的 UA。</dd>
+  </div>
+  <div class="term-card" id="perplexitybot">
+    <dt>PerplexityBot<em>Perplexity 检索爬虫</em></dt>
+    <dd>Perplexity 用于构建其答案引擎索引的爬虫。Perplexity 的回答高度依赖实时检索并显式标注来源，是观察 GEO 效果最直观的平台之一。</dd>
+  </div>
+  <div class="term-card" id="google-extended">
+    <dt>Google-Extended<em>Google AI 训练开关</em></dt>
+    <dd>Google 用于控制站点内容是否可用于 Gemini 等生成式 AI 产品训练与接地的独立标识。它不影响常规 Googlebot 的收录与排名，是一个单独的授权开关。</dd>
+  </div>
+  <div class="term-card" id="ccbot">
+    <dt>CCBot<em>Common Crawl 爬虫</em></dt>
+    <dd>Common Crawl 这一公开网页语料库的爬虫。由于大量模型的训练语料直接或间接来自 Common Crawl，放行 CCBot 是进入未来模型知识的重要通道之一。</dd>
+  </div>
+  <div class="term-card" id="bytespider">
+    <dt>Bytespider<em>字节跳动爬虫</em></dt>
+    <dd>字节跳动的网页爬虫，与豆包等产品的内容生态相关。面向中文市场做 GEO 时需要显式放行。</dd>
+  </div>
+</dl>
+
+<h2 id="methods">方法与风险<span style="color:var(--tx-3);font-weight:400;font-size:16px;margin-left:10px">6 条</span></h2>
+<dl class="terms">
+  <div class="term-card" id="source-engineering">
+    <dt>信源工程<em>Source Engineering</em></dt>
+    <dd>把真实资料改写成模型易读取、易引用的结构化事实（一句话定义、问答对、带日期出处的数据点、Schema 标记），并铺设到 AI 实际会检索的权威渠道的工作。是 GEO 中最难外包、也最决定上限的环节。</dd>
+  </div>
+  <div class="term-card" id="baseline-diagnosis">
+    <dt>基线诊断<em>Baseline Diagnosis</em></dt>
+    <dd>在做任何优化动作之前，用一套提前锁定的标准提问集跑测并打分，得到服务前的指标快照。没有基线就没有效果可言——所有「提升了多少」的说法都必须以基线为参照。</dd>
+  </div>
+  <div class="term-card" id="entity-disambiguation">
+    <dt>实体消歧<em>Entity Disambiguation</em></dt>
+    <dd>当目标对象与他人同名、或品牌名与其他事物撞名时，通过补充区分性事实（领域、机构、地域、代表作）帮助模型把两个实体区分开的工作。同名混淆是中文 GEO 中最高频的事实错误来源。</dd>
+  </div>
+  <div class="term-card" id="hallucination">
+    <dt>幻觉<em>Hallucination</em></dt>
+    <dd>大模型生成看似合理但与事实不符的内容。在 GEO 语境中特指模型编造目标对象的头衔、经历或成就。治理幻觉的有效手段不是辩解，而是提供足够密度的、互相一致的公开事实。</dd>
+  </div>
+  <div class="term-card" id="prompt-set">
+    <dt>标准提问集<em>Standard Prompt Set</em></dt>
+    <dd>用于跑测的一组固定提问。必须先定稿再跑测，定稿后不得增删改，否则前后对比失去意义。事后挑选表现好的题目来做对比，是这个行业最常见的数据造假手法。</dd>
+  </div>
+  <div class="term-card" id="astroturfing">
+    <dt>刷号灌水<em>Astroturfing</em></dt>
+    <dd>通过批量注册账号发布内容来伪造声量的做法。短期可能提升提及率，但会触发平台反垃圾机制，导致账号封禁、词条回退、被判营销号，最终反噬品牌。属于 GEO 的明确红线。</dd>
+  </div>
+</dl>
+
+<hr>
+
+<h2 id="faq">常见问题</h2>
+
+<h3>GEO 和 AEO 有什么区别？</h3>
+<p>基本是同一件事的不同叫法。GEO（Generative Engine Optimization，生成引擎优化）是学术界最早使用、也最通用的说法，出自 KDD 2024 论文；AEO（Answer Engine Optimization，答案引擎优化）强调优化对象是「一个直接答案」而不是「一列链接」。两者都有可追溯的出处，可以放心写进合同。相比之下 LLMO、AISO 属于营销造词，没有标准出处。</p>
+
+<h3>AI 提及率和事实准确率哪个更重要？</h3>
+<p>事实准确率更重要。提及率只看 AI 有没有提到你，事实准确率看提到你时说得对不对。被提到但被说错——头衔过时、机构写错、和同名者混淆——比完全不被提到更伤品牌，因为错误信息一旦被反复引用会自我强化。优化顺序上通常先把准确率拉上去，再谈提及率。</p>
+
+<h3>认知空白率高和事实错误率高，分别说明什么？</h3>
+<p>这是两种完全不同的病。认知空白率高（AI 压根不知道你）说明公开信源不足，治法是铺设信源；事实错误率高（AI 知道但说错）说明全网信息互相矛盾，治法是做一致性校准。用错药等于白做，所以诊断阶段必须把这两个指标分开统计。</p>
+
+<h3>robots.txt 里为什么要单独写 Google-Extended 和 Applebot-Extended？</h3>
+<p>因为它们是「AI 训练用途」的独立授权开关，不写等于默认不授权。Google-Extended 控制站点内容是否可用于 Gemini 等生成式 AI 产品，不影响常规 Googlebot 的收录与排名；Applebot-Extended 同理。希望内容进入模型知识的站点，必须显式放行这两个标识。</p>
+
+<h2 id="cite">引用本词典</h2>
+<div class="prompt">被AI推荐 GeoWorthy.《GEO 术语词典》. 2026-10-05. https://geoworthy.com/geo-glossary.html</div>
+
+<div class="doc-cta">
+  <h3>术语都看懂了，接下来呢？</h3>
+  <p>知道术语只是第一步。先用公开的评测标准跑一次基线，看看 AI 现在到底怎么描述你——不花钱，自己就能做。</p>
+  <div class="row">
+    <a href="/geo-benchmark.html" class="btn btn-primary">看评测标准 →</a>
+    <a href="/#order" class="btn btn-ghost">让我们帮你跑</a>
+  </div>
+</div>
+
+<h2 id="related" style="font-size:19px;margin-top:48px">继续读</h2>
+<div class="rel">
+  <a href="/geo-guide.html"><b>GEO 完整指南</b><span>定义、原理、五步做法、30 项自检清单</span></a>
+  <a href="/geo-vs-seo.html"><b>GEO 与 SEO 的区别</b><span>预算怎么分、两者如何叠加</span></a>
+  <a href="/geo-benchmark.html"><b>GEO 可见度评测标准</b><span>22 条提问集与打分口径，可自行复现</span></a>
+</div>
+
+</article>
+
+<aside class="toc" aria-label="本页目录">
+  <div class="toc-t">分类</div>
+  <a href="#concepts">核心概念</a>
+  <a href="#metrics">衡量指标</a>
+  <a href="#tech">技术要素</a>
+  <a href="#crawlers">AI 爬虫</a>
+  <a href="#methods">方法与风险</a>
+  <a href="#faq">常见问题</a>
+  <a href="#cite">引用本词典</a>
+</aside>
+</div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div style="max-width:380px">
+        <a href="/" class="logo" style="font-size:18px"><span class="logo-mark"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="url(#gwGrad)" fill-rule="evenodd" d="M24 2.5C14.1 2.5 6 10.6 6 20.5c0 12.4 15.9 24.2 16.6 24.7a2.4 2.4 0 0 0 2.8 0C26.1 44.7 42 32.9 42 20.5 42 10.6 33.9 2.5 24 2.5Z M14.2 12.8h6.6v6.6c0 3.9-2.2 6.6-6 7.8l-1.5-3.1c2-.8 3.1-1.8 3.3-3.3h-2.4z M27.2 12.8h6.6v6.6c0 3.9-2.2 6.6-6 7.8l-1.5-3.1c2-.8 3.1-1.8 3.3-3.3h-2.4z"/></svg></span><span class="logo-copy">GeoWorthy<small>AI visibility</small></span></a>
+        <p style="margin-top:14px;line-height:1.7">帮个人 IP 与品牌，在 AI 回答里被正确识别、被推荐。可验证交付，不编造、不承诺「保证第一」。</p>
+      </div>
+      <div class="foot-nav"><a href="/geo-guide.html">完整指南</a><a href="/geo-vs-seo.html">GEO vs SEO</a><a href="/geo-glossary.html">术语词典</a><a href="/geo-benchmark.html">评测标准</a><a href="/llms.txt">llms.txt</a><a href="/#pricing">价格</a></div>
+    </div>
+    <div class="foot-legal">
+      <span>© 2026 被AI推荐 GeoWorthy · 本页以 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="nofollow noopener" target="_blank" style="color:var(--tx-2)">CC BY 4.0</a> 授权</span>
+      <span>本服务为信息优化服务，不代表与所列 AI 平台存在合作或授权关系</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = [].slice.call(document.querySelectorAll('.toc a'));
+  if(!links.length) return;
+  var map = {};
+  links.forEach(function(a){
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    if(el) map[el.id] = a;
+  });
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){ a.classList.remove('on'); });
+        if(map[e.target.id]) map[e.target.id].classList.add('on');
+      }
+    });
+  }, { rootMargin: '-84px 0px -72% 0px' });
+  Object.keys(map).forEach(function(id){ obs.observe(document.getElementById(id)); });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEO 生成引擎优化完整指南（2026）：定义、原理、做法、衡量与避坑 | GeoWorthy</title>
+<meta name="description" content="一篇讲透 GEO（Generative Engine Optimization，生成引擎优化）：权威定义、与 SEO/AEO/LLMO 的区别、大模型决定推荐谁的三条路径、什么内容容易被 AI 引用、五步落地法、三个可量化指标的计算公式、7 个行业骗局，以及 30 项自检清单。引用 KDD 2024 原始论文，持续更新。">
+<meta name="keywords" content="GEO,生成引擎优化,Generative Engine Optimization,GEO是什么,GEO怎么做,GEO和SEO区别,AEO,答案引擎优化,LLMO,AI搜索优化,AI提及率,llms.txt">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="author" content="被AI推荐 GeoWorthy">
+<meta name="publisher" content="被AI推荐 GeoWorthy">
+<link rel="canonical" href="https://geoworthy.com/geo-guide.html">
+<link rel="alternate" hreflang="zh-CN" href="https://geoworthy.com/geo-guide.html">
+<link rel="alternate" hreflang="x-default" href="https://geoworthy.com/geo-guide.html">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0E1A">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://geoworthy.com/geo-guide.html">
+<meta property="og:site_name" content="被AI推荐 GeoWorthy">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="GEO 生成引擎优化完整指南（2026）">
+<meta property="og:description" content="定义、原理、做法、衡量与避坑，一篇讲透 GEO。引用 KDD 2024 原始论文，持续更新。">
+<meta property="og:image" content="https://geoworthy.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GEO 生成引擎优化完整指南（2026）">
+<meta name="twitter:description" content="定义、原理、做法、衡量与避坑，一篇讲透 GEO。">
+<meta name="twitter:image" content="https://geoworthy.com/assets/og-image.jpg">
+<link rel="alternate" type="text/plain" title="LLM-friendly summary (llms.txt)" href="https://geoworthy.com/llms.txt">
+<link rel="stylesheet" href="/assets/site.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://geoworthy.com/geo-guide.html#article",
+      "headline": "GEO 生成引擎优化完整指南（2026）",
+      "alternativeHeadline": "定义、原理、做法、衡量与避坑",
+      "description": "系统讲解 GEO（Generative Engine Optimization，生成引擎优化）的权威定义、与 SEO/AEO/LLMO 的区别、大模型决定推荐对象的三条路径、提升被引用概率的内容特征、五步落地法、三个可量化指标的计算公式、行业常见骗局与 30 项自检清单。",
+      "inLanguage": "zh-CN",
+      "url": "https://geoworthy.com/geo-guide.html",
+      "mainEntityOfPage": "https://geoworthy.com/geo-guide.html",
+      "datePublished": "2026-10-05",
+      "dateModified": "2026-10-05",
+      "wordCount": 7200,
+      "articleSection": "GEO 生成引擎优化",
+      "proficiencyLevel": "Beginner",
+      "dependencies": "无需技术背景",
+      "author": { "@id": "https://geoworthy.com/#org" },
+      "publisher": { "@id": "https://geoworthy.com/#org" },
+      "image": "https://geoworthy.com/assets/og-image.jpg",
+      "about": { "@id": "https://geoworthy.com/#term-geo" },
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".quotable", "h1"] },
+      "citation": [
+        {
+          "@type": "ScholarlyArticle",
+          "name": "GEO: Generative Engine Optimization",
+          "author": "Pranjal Aggarwal, Vishvak Murahari, Tanmay Rajpurohit, Ashwin Kalyan, Karthik Narasimhan, Ameet Deshpande",
+          "datePublished": "2023-11-16",
+          "identifier": "arXiv:2311.09735",
+          "url": "https://arxiv.org/abs/2311.09735",
+          "publication": "Proceedings of the 30th ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD '24)"
+        },
+        {
+          "@type": "WebPage",
+          "name": "/llms.txt — a proposal to provide information to help LLMs use websites",
+          "author": "Jeremy Howard",
+          "datePublished": "2024-09-03",
+          "url": "https://www.answer.ai/posts/2024-09-03-llmstxt.html"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://geoworthy.com/geo-guide.html#crumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://geoworthy.com/" },
+        { "@type": "ListItem", "position": 2, "name": "GEO 知识库", "item": "https://geoworthy.com/geo-guide.html" },
+        { "@type": "ListItem", "position": 3, "name": "GEO 完整指南", "item": "https://geoworthy.com/geo-guide.html" }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://geoworthy.com/geo-guide.html#howto",
+      "name": "怎么做 GEO：五步闭环",
+      "description": "把「让 AI 说对你、推荐你」拆成五个可验收的步骤，每一步都有明确产出物与验收标准。",
+      "inLanguage": "zh-CN",
+      "totalTime": "P4W",
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "基线诊断", "text": "用一套固定的标准提问集跑测目标 AI 平台，逐条截图并按 0/1/2 打分，算出服务前的提及率、事实准确率与认知空白率。没有基线就没有效果可言。", "url": "https://geoworthy.com/geo-guide.html#how" },
+        { "@type": "HowToStep", "position": 2, "name": "信息校准", "text": "把全网关于你的关键事实（姓名、头衔、机构、业务、成就）统一成一套口径，逐一修正冲突来源。信息互相打架时，模型倾向于回避或给模糊答案。", "url": "https://geoworthy.com/geo-guide.html#how" },
+        { "@type": "HowToStep", "position": 3, "name": "信源工程", "text": "把真实资料改写成模型易读取、易引用的结构化事实：一句话定义、问答对、带日期和出处的数据点、Schema.org 标记、llms.txt。", "url": "https://geoworthy.com/geo-guide.html#how" },
+        { "@type": "HowToStep", "position": 4, "name": "权威源铺设", "text": "把结构化事实铺设到模型联网检索时真正会抓取的渠道：自有站、百科、专业问答社区、行业媒体、代码与学术平台。只发真实内容。", "url": "https://geoworthy.com/geo-guide.html#how" },
+        { "@type": "HowToStep", "position": 5, "name": "复测交付", "text": "用与基线完全相同的提问集复测，出前后对比数据，附截图存证与完整 prompt 清单，让对方能自己复现。", "url": "https://geoworthy.com/geo-guide.html#how" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://geoworthy.com/geo-guide.html#faq",
+      "inLanguage": "zh-CN",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "GEO 是什么？",
+          "acceptedAnswer": { "@type": "Answer", "text": "GEO 是 Generative Engine Optimization（生成引擎优化）的缩写，指让一个品牌、个人或内容，在 ChatGPT、Claude、Gemini、DeepSeek、豆包等生成式 AI 的回答中被正确识别、准确描述并被引用推荐的优化实践。它优化的不是搜索结果排名，而是 AI 生成答案时引用了谁、怎么说。这个术语出自 Aggarwal、Murahari 等人 2023 年的论文《GEO: Generative Engine Optimization》（arXiv:2311.09735），该研究发表于 KDD 2024。" }
+        },
+        {
+          "@type": "Question",
+          "name": "GEO 和 SEO 有什么区别？",
+          "acceptedAnswer": { "@type": "Answer", "text": "SEO 争的是结果页上的排名位置，用户看到一列链接后自己挑；GEO 争的是 AI 那段答案里提到谁、怎么说，用户直接拿走一个结论，没有第二页。SEO 的核心资产是关键词、外链与页面权重，GEO 的核心资产是结构化事实、权威信源与全网信息一致性。衡量指标也不同：SEO 看排名、点击率与自然流量，GEO 看提及率、事实准确率与正确识别的平台数。" }
+        },
+        {
+          "@type": "Question",
+          "name": "GEO、AEO、LLMO、AISO 是一回事吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "基本是同一件事的不同叫法，只是侧重点不同。GEO（生成引擎优化）是学术界最早使用、也最通用的叫法；AEO（Answer Engine Optimization，答案引擎优化）强调优化对象是一个直接答案而不是一列链接；LLMO / LLM SEO 强调优化对象是大语言模型；AISO / AI SEO 多见于营销语境。选术语时建议以 GEO 为主、AEO 为辅，因为这两个词有可追溯的出处。" }
+        },
+        {
+          "@type": "Question",
+          "name": "能把资料提交给 ChatGPT 让它收录吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "不能，任何服务商都不能。大语言模型没有「提交收录」这个机制——你无法把一份资料递给 ChatGPT 并让它写进模型参数。模型回答时接触到你的信息只有三条路径：预训练语料（已经固定，不可投递）、联网检索（可优化，这是 GEO 的主战场）、用户自己提供的上下文（不可控）。任何宣称能「保证收录」的服务商都不可信。" }
+        },
+        {
+          "@type": "Question",
+          "name": "GEO 多久能见效？",
+          "acceptedAnswer": { "@type": "Answer", "text": "取决于你现有的信源厚度，而不是取决于服务商。本来就有官网、公开报道、专业社区内容的，2 到 6 周能看到明显变化；完全从零开始的，需要更长时间做信源积累，通常以季度计。任何宣称「三天见效」「一周上首位」的说法都不可信——模型的联网检索索引和回答分布本身就有滞后与波动。" }
+        },
+        {
+          "@type": "Question",
+          "name": "GEO 效果要怎么验证才算数？",
+          "acceptedAnswer": { "@type": "Answer", "text": "三个条件缺一不可：第一，用同一套固定提问集在服务前后各跑一次，提问集必须提前锁定、不能事后挑题；第二，每条回答都有截图存证，并记录平台、日期与会话设置；第三，把完整 prompt 清单交给你，让你能自己复现。只给结论不给 prompt 清单的报告，等于不可验证。" }
+        },
+        {
+          "@type": "Question",
+          "name": "做 GEO 需要先有网站吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "强烈建议有，但不是绝对必需。自有站点是唯一你能完全控制的信源，也是放置结构化数据、llms.txt 和权威事实的地基。没有自有站点时，可以先用专业社区主页、代码托管平台个人页、行业目录等作为替代锚点，但可控性和长期价值都弱很多。" }
+        },
+        {
+          "@type": "Question",
+          "name": "GEO 大概要花多少钱？",
+          "acceptedAnswer": { "@type": "Answer", "text": "市场上大致分三档：一次性诊断通常在几百元量级，交付的是现状报告与优化建议；个人 IP 或单品牌的基础优化包通常在数千元量级，周期 4 周左右；企业级全链路服务按月订阅，价格区间很大。判断是否值得的标准不是价格高低，而是对方敢不敢在合同里写明可量化的指标区间、时间窗口和可复现的验证方式。" }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs><linearGradient id="gwGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B8CFF"/><stop offset="1" stop-color="#7C5CFF"/></linearGradient></defs></svg>
+
+<nav>
+  <div class="nav-in">
+    <a href="/" class="logo" aria-label="GeoWorthy 首页"><span class="logo-mark"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="url(#gwGrad)" fill-rule="evenodd" d="M24 2.5C14.1 2.5 6 10.6 6 20.5c0 12.4 15.9 24.2 16.6 24.7a2.4 2.4 0 0 0 2.8 0C26.1 44.7 42 32.9 42 20.5 42 10.6 33.9 2.5 24 2.5Z M14.2 12.8h6.6v6.6c0 3.9-2.2 6.6-6 7.8l-1.5-3.1c2-.8 3.1-1.8 3.3-3.3h-2.4z M27.2 12.8h6.6v6.6c0 3.9-2.2 6.6-6 7.8l-1.5-3.1c2-.8 3.1-1.8 3.3-3.3h-2.4z"/></svg></span><span class="logo-copy">GeoWorthy<small>AI visibility</small></span></a>
+    <div class="nav-links">
+      <a href="/geo-guide.html">完整指南</a>
+      <a href="/geo-vs-seo.html">GEO vs SEO</a>
+      <a href="/geo-glossary.html">术语词典</a>
+      <a href="/geo-benchmark.html">评测标准</a>
+      <a href="/#pricing">价格</a>
+    </div>
+    <a href="/#order" class="btn btn-primary btn-sm">免费诊断 →</a>
+  </div>
+</nav>
+
+<div class="doc-head">
+  <div class="wrap">
+    <nav class="crumb" aria-label="面包屑"><a href="/">首页</a><span>/</span><a href="/geo-guide.html">GEO 知识库</a><span>/</span>完整指南</nav>
+    <span class="eyebrow">完整指南</span>
+    <h1>GEO 生成引擎优化完整指南（2026）</h1>
+    <p class="doc-sub">定义、原理、做法、衡量与避坑。写给要把自己或品牌「喂」给大模型的人——不讲虚的，每个说法都能被验证。</p>
+    <div class="doc-meta">
+      <span><b>最后更新</b> <time datetime="2026-10-05">2026 年 10 月 5 日</time></span>
+      <span><b>阅读时长</b> 约 25 分钟</span>
+      <span><b>授权</b> <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="nofollow noopener" target="_blank" style="color:var(--ac)">CC BY 4.0</a> · 注明出处即可转载</span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="doc">
+<article class="doc-body">
+
+<div class="quotable">
+  <p><span class="term">GEO（Generative Engine Optimization，生成引擎优化）</span>是让一个品牌、个人或内容，在 ChatGPT、Claude、Gemini、DeepSeek、豆包等生成式 AI 的回答中<strong>被正确识别、被准确描述、并被引用推荐</strong>的优化实践。它优化的不是搜索结果的排名，而是 <strong>AI 在生成答案时引用了谁、怎么说</strong>。</p>
+  <p>这个术语出自 Aggarwal、Murahari 等人 2023 年 11 月的论文《GEO: Generative Engine Optimization》（<a href="https://arxiv.org/abs/2311.09735" rel="nofollow noopener" target="_blank">arXiv:2311.09735</a>），该研究发表于 KDD 2024，是第一个在受控实验中证明「内容可以被刻意优化以提升在 AI 生成答案中可见度」的工作。</p>
+</div>
+
+<h2 id="what">一、GEO 到底是什么</h2>
+
+<p>先把最容易混淆的一点说清楚：<strong>GEO 不是一种让 AI「收录」你的技术</strong>。它是一套让 AI 在需要回答某类问题时，<em>更容易找到你、更愿意引用你、并且说对你</em>的工程实践。</p>
+
+<p>传统搜索给你一列链接，你自己挑。生成式 AI 直接给你一段结论，顺带标几个来源。这个变化带来的后果很直接：<strong>没有第二页了</strong>。答案里提到谁，用户就认识谁。</p>
+
+<p>所以 GEO 的工作对象不是「排名」，而是三件事：</p>
+
+<ul>
+  <li><strong>可发现性</strong>——模型联网检索时，能不能抓到关于你的内容</li>
+  <li><strong>可引用性</strong>——抓到之后，内容的形态是否便于被直接摘出来当作答案的一部分</li>
+  <li><strong>一致性</strong>——不同来源对你的描述是否互相矛盾</li>
+</ul>
+
+<div class="note">
+  <p><b>记住这句话：</b>SEO 优化的是「用户点不点你」，GEO 优化的是「AI 提不提你」。前者的失败是流量少了，后者的失败是<strong>彻底不存在</strong>。</p>
+</div>
+
+<h2 id="vs-seo">二、GEO 和 SEO 有什么区别</h2>
+
+<p>两者不是替代关系，而是叠加关系——GEO 的很多基础工作（站点可抓取、结构化数据、内容质量）本来就是 SEO 的一部分。但目标函数完全不同。</p>
+
+<div class="tw">
+<table>
+  <caption>GEO 与 SEO 的核心差异（2026 年口径）</caption>
+  <thead><tr><th scope="col">维度</th><th scope="col">SEO 搜索引擎优化</th><th scope="col">GEO 生成引擎优化</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">优化目标</th><td>在结果页排到前面</td><td>在 AI 的回答里被提到、且被说对</td></tr>
+    <tr><th scope="row">用户行为</th><td>搜索 → 看一列链接 → 自己挑</td><td>提问 → 直接拿走一个答案</td></tr>
+    <tr><th scope="row">竞争位置</th><td>第 1 ～ 10 条结果</td><td>答案里的那一两句话</td></tr>
+    <tr><th scope="row">核心资产</th><td>关键词、外链、页面权重</td><td>结构化事实、权威信源、全网信息一致性</td></tr>
+    <tr><th scope="row">内容形态</th><td>为「人点进来之后」写</td><td>为「模型摘走一段」写</td></tr>
+    <tr><th scope="row">衡量指标</th><td>排名、点击率、自然流量</td><td>提及率、事实准确率、正确识别的平台数</td></tr>
+    <tr><th scope="row">结果确定性</th><td>相对稳定，可追踪到具体名次</td><td>有随机性，同一问题多次提问结果可能不同</td></tr>
+    <tr><th scope="row">见效周期</th><td>3 ～ 6 个月</td><td>2 ～ 6 周（取决于已有信源厚度）</td></tr>
+  </tbody>
+</table>
+</div>
+
+<p>最反直觉的一点是<strong>结果确定性</strong>。SEO 里你可以说「我排第 3」；GEO 里只能说「20 次提问中被提到 12 次」。所以凡是承诺「保证 AI 第一推荐」的，不是不懂就是在骗。</p>
+
+<p>想看更细的拆解，可以读 <a href="/geo-vs-seo.html">GEO 与 SEO 的区别：一篇说清该怎么分配预算</a>。</p>
+
+<h2 id="terms">三、GEO、AEO、LLMO、AISO 是一回事吗</h2>
+
+<p>基本是同一件事的不同叫法，只是侧重点不同。这个领域术语很乱，这里一次说清：</p>
+
+<div class="tw">
+<table>
+  <thead><tr><th scope="col">术语</th><th scope="col">全称</th><th scope="col">侧重</th><th scope="col">出处是否可追溯</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">GEO</th><td>Generative Engine Optimization</td><td>优化对象是「生成式引擎」整体</td><td>是，KDD 2024 论文</td></tr>
+    <tr><th scope="row">AEO</th><td>Answer Engine Optimization</td><td>强调结果是「一个答案」而非一列链接</td><td>是，早于 GEO 出现在行业语境</td></tr>
+    <tr><th scope="row">LLMO / LLM SEO</th><td>LLM Optimization</td><td>强调优化对象是大语言模型</td><td>否，营销造词</td></tr>
+    <tr><th scope="row">AISO / AI SEO</th><td>AI Search Optimization</td><td>强调场景是 AI 搜索</td><td>否，营销造词</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="note good">
+  <p><b>建议：</b>对外沟通用 <strong>GEO</strong> 为主、<strong>AEO</strong> 为辅，因为这两个词有可追溯的出处，写进合同和报告里不会有歧义。遇到只会说 LLMO / AISO 并且讲不清它和 GEO 区别的服务商，可以直接降低预期。</p>
+</div>
+
+<h2 id="how-llm-decides">四、大模型到底是怎么决定推荐谁的</h2>
+
+<p>这是整篇指南最重要的一节。<strong>搞不清这三条路径，所有 GEO 动作都是瞎做。</strong></p>
+
+<p>模型在回答里提到你，信息只可能来自三个地方：</p>
+
+<ol class="steps">
+  <li>
+    <h3>预训练语料 —— 已经固定，不可投递</h3>
+    <p>模型训练时吃进去的公开网络数据。这部分在模型发布时就冻结了，<strong>没有任何办法往里面「补录」</strong>。你能做的只有一件事：让今天发布的内容，有机会进入<em>下一代</em>模型的训练语料——也就是发布在那些长期被抓取的公开平台上。</p>
+  </li>
+  <li>
+    <h3>联网检索 —— 可优化，GEO 的主战场</h3>
+    <p>模型回答时实时去搜，把搜到的网页内容塞进上下文再生成答案。<strong>这条路径是实时的、可控的、当天就能起作用的。</strong>它由两步组成：检索（你的页面能否被搜到）与引用（搜到之后模型愿不愿意摘你这段）。GEO 90% 的工作量都在这里。</p>
+  </li>
+  <li>
+    <h3>用户提供的上下文 —— 不可控</h3>
+    <p>用户自己把文件、链接粘进对话。这部分和优化无关，但它解释了一个常见现象：<em>你自己问 AI「我是谁」得到的答案特别准</em>——因为你的历史对话和记忆影响了结果。所以<strong>跑测必须新开会话、关闭个性化记忆</strong>，否则测出来的是幻觉。</p>
+  </li>
+</ol>
+
+<div class="note warn">
+  <p><b>这是 GEO 领域最大的认知陷阱：</b>很多人拿自己账号问 AI「我是谁」，发现答得挺准，就以为不用做 GEO 了。换一台设备、新开会话、关掉记忆再问一遍，往往是完全不同的结果。<strong>有记忆的会话不能作为基线。</strong></p>
+</div>
+
+<h2 id="what-gets-cited">五、什么样的内容更容易被 AI 引用</h2>
+
+<p>KDD 2024 的那篇原始论文做了迄今为止最系统的受控实验：GEO-Bench 覆盖约 10,000 条查询、9 个数据集，测试了多种内容改写策略对「在生成答案中可见度」的影响。研究报告的整体提升区间为 <strong>22% ～ 41%</strong>，其中<strong>引用来源、加入统计数据、加入引述</strong>这几类策略的提升幅度最高，约 40%。</p>
+
+<div class="note">
+  <p><b>重要提醒：</b>上面这组数字来自论文自身的实验设定（特定模型、特定数据集、2023–2024 年的环境），<strong>不等于你照做就能涨 40%</strong>。它的价值在于指出了方向——结构化、有出处、有数据的内容更容易被摘用——而不是给你一个可承诺的收益率。任何把这组数字直接当作服务效果承诺的说法，都是误用。</p>
+</div>
+
+<p>结合论文方向与实际跑测，下面这些特征能实打实提高被摘用的概率：</p>
+
+<ul>
+  <li><strong>自洽的定义句。</strong>「X 是 Y」这种结构，模型可以原样摘走而不需要上下文。每个重要概念都给一句。</li>
+  <li><strong>问题形态的小标题。</strong>把 H2/H3 写成用户真会问的话（「GEO 多久见效」而不是「效果周期」）。</li>
+  <li><strong>答案前置。</strong>小标题下的第一句就是答案，不要铺垫。模型摘的往往就是开头那一两句。</li>
+  <li><strong>表格和列表。</strong>结构化程度高，容易被整块提取。</li>
+  <li><strong>带日期和出处的数据点。</strong>「2026 年 10 月的实测结果」比「大量数据表明」有用得多。</li>
+  <li><strong>明确的作者与更新时间。</strong>模型倾向于引用有责任主体、且看起来是新的内容。</li>
+  <li><strong>原创数据或方法。</strong>只复述别人的内容，模型没有理由引用你而不是引用源头。<strong>这是从零起步最有效的一招。</strong></li>
+  <li><strong>Schema.org 结构化标记。</strong>让机器不用猜就知道哪段是定义、哪段是问答、谁是作者。</li>
+  <li><strong>llms.txt。</strong>放在站点根目录、专门写给大模型看的纯文本摘要，由 Jeremy Howard 于 2024 年 9 月 3 日在 <a href="https://www.answer.ai/posts/2024-09-03-llmstxt.html" rel="nofollow noopener" target="_blank">Answer.AI</a> 提出，规范见 <a href="https://llmstxt.org/" rel="nofollow noopener" target="_blank">llmstxt.org</a>。</li>
+</ul>
+
+<h2 id="how">六、GEO 具体怎么做：五步闭环</h2>
+
+<p>下面这套流程的核心约束是：<strong>每一步都有可检查的产出物，最后能拿出前后对比。</strong>没有基线的「优化」没有意义。</p>
+
+<ol class="steps">
+  <li>
+    <h3>基线诊断</h3>
+    <p>用一套<strong>提前锁定</strong>的标准提问集跑测目标平台，逐条截图、按 0/1/2 打分，算出服务前的提及率、事实准确率与认知空白率。提问集必须先定后测，不能测完再挑好看的题。我们把自己在用的那套完整公开了：<a href="/geo-benchmark.html">GEO 可见度评测标准</a>。</p>
+  </li>
+  <li>
+    <h3>信息校准</h3>
+    <p>把全网关于你的关键事实统一成一套口径：名字怎么写、头衔是什么、在哪个机构、做什么业务、有哪些可核实的成就。然后逐一修正冲突来源。<strong>模型最怕的不是没信息，是信息打架</strong>——来源互相矛盾时，它倾向于回避或给模糊答案。</p>
+  </li>
+  <li>
+    <h3>信源工程</h3>
+    <p>把真实资料改写成模型易读取、易引用的形态：一句话定义、问答对、带日期和出处的数据点、Schema.org 标记、llms.txt。这一步是整套流程里<strong>最难外包、也最决定上限</strong>的环节。</p>
+  </li>
+  <li>
+    <h3>权威源铺设</h3>
+    <p>把结构化事实铺到模型联网检索时真正会抓的渠道。不同领域渠道差别很大，但通用的有：自有站点、百科类词条、专业问答社区、行业媒体、代码与学术平台。<strong>只发真实内容</strong>——批量小号灌水短期可能有点效果，但账号会被封、词条会被回退、平台会判营销号，最后砸的是自己的招牌。</p>
+  </li>
+  <li>
+    <h3>复测交付</h3>
+    <p>用与基线<strong>完全相同</strong>的提问集复测，出前后对比数据，附截图存证与完整 prompt 清单。交付物必须能让对方自己复现——只给结论不给 prompt 的报告，等于不可验证。</p>
+  </li>
+</ol>
+
+<h2 id="metrics">七、GEO 效果怎么衡量</h2>
+
+<p>只认三个指标，而且每个都要有明确的计算口径。<strong>说不清公式的指标就是话术。</strong></p>
+
+<h3>打分口径（每条提问 0 ～ 2 分）</h3>
+<div class="tw">
+<table>
+  <thead><tr><th scope="col">分值</th><th scope="col">含义</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">0 分</th><td>完全不知道，或答非所问 —— 认知空白</td></tr>
+    <tr><th scope="row">1 分</th><td>知道，但有错误、过时或张冠李戴 —— 事实错误</td></tr>
+    <tr><th scope="row">2 分</th><td>准确、完整、正面 —— 达标</td></tr>
+  </tbody>
+</table>
+</div>
+
+<h3>三个核心指标</h3>
+<ul>
+  <li><strong>提及率</strong> ＝ 回答中出现目标名称的题数 ÷ 总题数。例：20 条提问中出现 12 次，提及率 60%。</li>
+  <li><strong>事实准确率</strong> ＝ 得 2 分的题数 ÷ 总题数。<strong>这个比提及率更重要</strong>——被提到但被说错，比不被提到更伤。</li>
+  <li><strong>正确识别平台数</strong> ＝ 事实准确率达到约定阈值的平台个数。它衡量的是覆盖广度。</li>
+</ul>
+
+<p>另外两个诊断用的辅助指标：<strong>认知空白率</strong>（0 分题数占比）和<strong>事实错误率</strong>（1 分题数占比）。前者高说明缺信源，后者高说明信息打架——<strong>两种病的治法完全不同</strong>。</p>
+
+<div class="note good">
+  <p><b>写进合同的正确措辞：</b>「在约定的 N 个品牌词提问下，AI 回答关键事实正确率从基线 X% 提升到 ≥ Y%，且至少 M 个平台能正确识别；附前后截图与可复现 prompt。达成时间窗口 T 周。」</p>
+  <p style="margin-top:10px"><b>禁止出现的措辞：</b>「保证永久出现 / 保证品类第一 / 3 天见效」。AI 回答本身是非确定性的，写死就是给自己挖售后坑。</p>
+</div>
+
+<h2 id="scams">八、这 7 种说法，听到就可以结束对话</h2>
+
+<ol>
+  <li><strong>「我们能让 ChatGPT 收录你。」</strong>——大模型没有提交收录机制。见本文第四节的三条路径。</li>
+  <li><strong>「保证 AI 第一个推荐你。」</strong>——生成结果有随机性，同一问题多次提问结果都可能不同，「第一」无法定义更无法保证。</li>
+  <li><strong>「三天见效 / 一周上首位。」</strong>——联网检索索引本身有滞后，信源积累需要时间。</li>
+  <li><strong>「我们有内部渠道 / 和大模型厂商有合作。」</strong>——目前没有任何面向第三方的「推荐位」产品。</li>
+  <li><strong>「效果看后台数据。」</strong>——追问：什么后台？数据怎么来的？能不能给 prompt 清单让我自己复现？<strong>不能复现的数据没有意义。</strong></li>
+  <li><strong>「我们帮你批量生成几百篇内容铺出去。」</strong>——批量灌水会触发平台反垃圾机制，词条回退、账号封禁，反噬品牌。</li>
+  <li><strong>「先交钱，效果看后续。」</strong>——正规做法是先出基线诊断，看完再决定做不做。</li>
+</ol>
+
+<div class="note bad">
+  <p><b>一个简单的鉴别方法：</b>让对方现场说出<strong>「提及率」和「事实准确率」的计算公式</strong>，以及<strong>他们打算用哪 20 条提问给你做基线</strong>。答不上来的，基本可以排除。</p>
+</div>
+
+<h2 id="checklist">九、GEO 自检清单（30 项）</h2>
+
+<p>不用请人，先自己过一遍。能打勾的越多，起点越高。</p>
+
+<h3>A · 技术地基（8 项）</h3>
+<ul class="check">
+  <li>站点可以通过 <b>HTTPS</b> 正常访问，证书有效</li>
+  <li><b>robots.txt</b> 没有拦截 AI 爬虫（GPTBot、ClaudeBot、PerplexityBot、Applebot-Extended、Google-Extended、CCBot 等）</li>
+  <li><b>sitemap.xml</b> 存在、命名空间正确、能被正常解析</li>
+  <li>核心内容是<b>服务端直出的 HTML</b>，不依赖 JavaScript 渲染（很多 AI 爬虫不执行 JS）</li>
+  <li>每页有唯一且正确的 <b>canonical</b>，与实际托管域名一致</li>
+  <li>多语言站点配置了<b>双向 hreflang</b> 和 x-default</li>
+  <li>页面有明确的 <b>dateModified</b>，且内容确实更新过</li>
+  <li>站点根目录有 <b>llms.txt</b></li>
+</ul>
+
+<h3>B · 结构化数据（7 项）</h3>
+<ul class="check">
+  <li>有 <b>Organization</b> 或 <b>Person</b> 节点，含 logo、sameAs、contactPoint</li>
+  <li>重要页面有 <b>WebPage / Article</b> 节点，含 author、publisher、datePublished</li>
+  <li>流程类内容用 <b>HowTo</b> 标记</li>
+  <li>术语用 <b>DefinedTerm / DefinedTermSet</b> 标记</li>
+  <li>有 <b>BreadcrumbList</b></li>
+  <li><b>FAQPage</b> 标记的问答与页面可见内容<b>逐条一致</b>（不一致违反结构化数据政策，有被降权风险）</li>
+  <li>JSON-LD 能被解析器正常解析，无语法错误</li>
+</ul>
+
+<h3>C · 内容可引用性（8 项）</h3>
+<ul class="check">
+  <li>首屏有一段<b>自洽的一句话定义</b>，脱离上下文也能读懂</li>
+  <li>小标题写成<b>用户真会问的问题</b></li>
+  <li>每个小标题下<b>第一句就是答案</b>，没有铺垫</li>
+  <li>关键对比用<b>表格</b>呈现</li>
+  <li>数据点都带<b>日期与出处</b></li>
+  <li>有<b>署名作者</b>和可核实的身份</li>
+  <li>有<b>原创数据、原创方法或原创观点</b>，不是纯复述</li>
+  <li>有一份覆盖真实高频问题的 <b>FAQ</b></li>
+</ul>
+
+<h3>D · 信息一致性与站外（7 项）</h3>
+<ul class="check">
+  <li>名字、头衔、机构在<b>所有渠道写法一致</b>（包括中英文、简繁）</li>
+  <li>没有<b>过时信息</b>残留在外部平台</li>
+  <li>没有<b>同名混淆</b>风险，或已做明确区分</li>
+  <li>在至少 <b>3 个独立的第三方平台</b>有可被检索到的内容</li>
+  <li>外部内容<b>指回自有站点</b>，形成实体关联</li>
+  <li>有<b>百科类</b>或行业目录类词条（如适用）</li>
+  <li>所有公开内容<b>真实可核实</b>，没有夸大或虚构</li>
+</ul>
+
+<h2 id="faq">十、常见问题</h2>
+
+<h3>GEO 是什么？</h3>
+<p>GEO 是 Generative Engine Optimization（生成引擎优化）的缩写，指让一个品牌、个人或内容，在 ChatGPT、Claude、Gemini、DeepSeek、豆包等生成式 AI 的回答中被正确识别、准确描述并被引用推荐的优化实践。它优化的不是搜索结果排名，而是 AI 生成答案时引用了谁、怎么说。这个术语出自 Aggarwal、Murahari 等人 2023 年的论文《GEO: Generative Engine Optimization》（arXiv:2311.09735），该研究发表于 KDD 2024。</p>
+
+<h3>GEO 和 SEO 有什么区别？</h3>
+<p>SEO 争的是结果页上的排名位置，用户看到一列链接后自己挑；GEO 争的是 AI 那段答案里提到谁、怎么说，用户直接拿走一个结论，没有第二页。SEO 的核心资产是关键词、外链与页面权重，GEO 的核心资产是结构化事实、权威信源与全网信息一致性。衡量指标也不同：SEO 看排名、点击率与自然流量，GEO 看提及率、事实准确率与正确识别的平台数。</p>
+
+<h3>GEO、AEO、LLMO、AISO 是一回事吗？</h3>
+<p>基本是同一件事的不同叫法，只是侧重点不同。GEO（生成引擎优化）是学术界最早使用、也最通用的叫法；AEO（Answer Engine Optimization，答案引擎优化）强调优化对象是一个直接答案而不是一列链接；LLMO / LLM SEO 强调优化对象是大语言模型；AISO / AI SEO 多见于营销语境。选术语时建议以 GEO 为主、AEO 为辅，因为这两个词有可追溯的出处。</p>
+
+<h3>能把资料提交给 ChatGPT 让它收录吗？</h3>
+<p>不能，任何服务商都不能。大语言模型没有「提交收录」这个机制——你无法把一份资料递给 ChatGPT 并让它写进模型参数。模型回答时接触到你的信息只有三条路径：预训练语料（已经固定，不可投递）、联网检索（可优化，这是 GEO 的主战场）、用户自己提供的上下文（不可控）。任何宣称能「保证收录」的服务商都不可信。</p>
+
+<h3>GEO 多久能见效？</h3>
+<p>取决于你现有的信源厚度，而不是取决于服务商。本来就有官网、公开报道、专业社区内容的，2 到 6 周能看到明显变化；完全从零开始的，需要更长时间做信源积累，通常以季度计。任何宣称「三天见效」「一周上首位」的说法都不可信——模型的联网检索索引和回答分布本身就有滞后与波动。</p>
+
+<h3>GEO 效果要怎么验证才算数？</h3>
+<p>三个条件缺一不可：第一，用同一套固定提问集在服务前后各跑一次，提问集必须提前锁定、不能事后挑题；第二，每条回答都有截图存证，并记录平台、日期与会话设置；第三，把完整 prompt 清单交给你，让你能自己复现。只给结论不给 prompt 清单的报告，等于不可验证。</p>
+
+<h3>做 GEO 需要先有网站吗？</h3>
+<p>强烈建议有，但不是绝对必需。自有站点是唯一你能完全控制的信源，也是放置结构化数据、llms.txt 和权威事实的地基。没有自有站点时，可以先用专业社区主页、代码托管平台个人页、行业目录等作为替代锚点，但可控性和长期价值都弱很多。</p>
+
+<h3>GEO 大概要花多少钱？</h3>
+<p>市场上大致分三档：一次性诊断通常在几百元量级，交付的是现状报告与优化建议；个人 IP 或单品牌的基础优化包通常在数千元量级，周期 4 周左右；企业级全链路服务按月订阅，价格区间很大。判断是否值得的标准不是价格高低，而是对方敢不敢在合同里写明可量化的指标区间、时间窗口和可复现的验证方式。</p>
+
+<hr>
+
+<h2 id="refs">参考文献</h2>
+<ol>
+  <li>Pranjal Aggarwal, Vishvak Murahari, Tanmay Rajpurohit, Ashwin Kalyan, Karthik Narasimhan, Ameet Deshpande. <em>GEO: Generative Engine Optimization.</em> KDD '24. <a href="https://arxiv.org/abs/2311.09735" rel="nofollow noopener" target="_blank">arXiv:2311.09735</a></li>
+  <li>Jeremy Howard. <em>/llms.txt — a proposal to provide information to help LLMs use websites.</em> Answer.AI，2024-09-03。<a href="https://www.answer.ai/posts/2024-09-03-llmstxt.html" rel="nofollow noopener" target="_blank">原文</a> ｜ 规范：<a href="https://llmstxt.org/" rel="nofollow noopener" target="_blank">llmstxt.org</a></li>
+  <li>Schema.org 词汇表。<a href="https://schema.org/" rel="nofollow noopener" target="_blank">schema.org</a></li>
+</ol>
+
+<div class="doc-cta">
+  <h3>想知道 AI 现在怎么描述你？</h3>
+  <p>先做一次基线诊断。用上面这套方法跑测，给你截图存证和完整 prompt 清单——看完报告再决定要不要继续，不勉强。</p>
+  <div class="row">
+    <a href="/#order" class="btn btn-primary">免费诊断 →</a>
+    <a href="/geo-benchmark.html" class="btn btn-ghost">先看评测标准</a>
+  </div>
+</div>
+
+<h2 id="related" style="font-size:19px;margin-top:48px">继续读</h2>
+<div class="rel">
+  <a href="/geo-vs-seo.html"><b>GEO 与 SEO 的区别</b><span>预算怎么分、团队怎么配、两者如何叠加</span></a>
+  <a href="/geo-glossary.html"><b>GEO 术语词典</b><span>35 个术语的精确定义，中英对照</span></a>
+  <a href="/geo-benchmark.html"><b>GEO 可见度评测标准</b><span>开放的 22 条提问集与打分口径，可自行复现</span></a>
+</div>
+
+</article>
+
+<aside class="toc" aria-label="本页目录">
+  <div class="toc-t">目录</div>
+  <a href="#what">一、GEO 到底是什么</a>
+  <a href="#vs-seo">二、和 SEO 的区别</a>
+  <a href="#terms">三、GEO / AEO / LLMO</a>
+  <a href="#how-llm-decides">四、模型怎么决定推荐谁</a>
+  <a href="#what-gets-cited">五、什么内容容易被引用</a>
+  <a href="#how">六、五步闭环怎么做</a>
+  <a href="#metrics">七、效果怎么衡量</a>
+  <a href="#scams">八、7 种骗局</a>
+  <a href="#checklist">九、30 项自检清单</a>
+  <a href="#faq">十、常见问题</a>
+  <a href="#refs">参考文献</a>
+</aside>
+</div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div style="max-width:380px">
+        <a href="/" class="logo" style="font-size:18px"><span class="logo-mark"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="url(#gwGrad)" fill-rule="evenodd" d="M24 2.5C14.1 2.5 6 10.6 6 20.5c0 12.4 15.9 24.2 16.6 24.7a2.4 2.4 0 0 0 2.8 0C26.1 44.7 42 32.9 42 20.5 42 10.6 33.9 2.5 24 2.5Z M14.2 12.8h6.6v6.6c0 3.9-2.2 6.6-6 7.8l-1.5-3.1c2-.8 3.1-1.8 3.3-3.3h-2.4z M27.2 12.8h6.6v6.6c0 3.9-2.2 6.6-6 7.8l-1.5-3.1c2-.8 3.1-1.8 3.3-3.3h-2.4z"/></svg></span><span class="logo-copy">GeoWorthy<small>AI visibility</small></span></a>
+        <p style="margin-top:14px;line-height:1.7">帮个人 IP 与品牌，在 AI 回答里被正确识别、被推荐。可验证交付，不编造、不承诺「保证第一」。</p>
+      </div>
+      <div class="foot-nav">
+        <a href="/geo-guide.html">完整指南</a>
+        <a href="/geo-vs-seo.html">GEO vs SEO</a>
+        <a href="/geo-glossary.html">术语词典</a>
+        <a href="/geo-benchmark.html">评测标准</a>
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/#pricing">价格</a>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>© 2026 被AI推荐 GeoWorthy · 最后更新 <time datetime="2026-10-05">2026 年 10 月 5 日</time></span>
+      <span>本服务为信息优化服务，不代表与所列 AI 平台存在合作或授权关系</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// 目录高亮：当前阅读到哪一节
+(function(){
+  var links = [].slice.call(document.querySelectorAll('.toc a'));
+  if(!links.length) return;
+  var map = {};
+  links.forEach(function(a){
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    if(el) map[el.id] = a;
+  });
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){ a.classList.remove('on'); });
+        if(map[e.target.id]) map[e.target.id].classList.add('on');
+      }
+    });
+  }, { rootMargin: '-84px 0px -72% 0px' });
+  Object.keys(map).forEach(function(id){ obs.observe(document.getElementById(id)); });
+})();
+</script>
+</body>
+</html>

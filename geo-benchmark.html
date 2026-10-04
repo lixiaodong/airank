@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GEO 可见度评测标准 v1.0：22 条标准提问集与打分口径（开放方法论）| GeoWorthy</title>
+<meta name="description" content="一套公开、可复现的 GEO 效果评测方法：22 条分五类的标准提问集、0/1/2 打分口径、提及率与事实准确率的精确计算公式、跑测记录表模板。CC BY 4.0 授权，任何人可自由使用与引用，不必付费、不必找我们。">
+<meta name="keywords" content="GEO评测,GEO效果衡量,AI提及率怎么算,事实准确率,GEO标准提问集,GEO prompt,AI可见度测试,GEO基线诊断">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1">
+<meta name="author" content="被AI推荐 GeoWorthy">
+<meta name="publisher" content="被AI推荐 GeoWorthy">
+<link rel="canonical" href="https://geoworthy.com/geo-benchmark.html">
+<link rel="alternate" hreflang="zh-CN" href="https://geoworthy.com/geo-benchmark.html">
+<link rel="alternate" hreflang="x-default" href="https://geoworthy.com/geo-benchmark.html">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0A0E1A">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://geoworthy.com/geo-benchmark.html">
+<meta property="og:site_name" content="被AI推荐 GeoWorthy">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:title" content="GEO 可见度评测标准 v1.0（开放方法论）">
+<meta property="og:description" content="22 条标准提问集 + 0/1/2 打分口径 + 指标计算公式，CC BY 4.0 授权，任何人可自由使用。">
+<meta property="og:image" content="https://geoworthy.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GEO 可见度评测标准 v1.0（开放方法论）">
+<meta name="twitter:description" content="22 条标准提问集 + 打分口径 + 计算公式，CC BY 4.0，可自由引用。">
+<meta name="twitter:image" content="https://geoworthy.com/assets/og-image.jpg">
+<link rel="alternate" type="text/plain" title="LLM-friendly summary (llms.txt)" href="https://geoworthy.com/llms.txt">
+<link rel="stylesheet" href="/assets/site.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TechArticle",
+      "@id": "https://geoworthy.com/geo-benchmark.html#article",
+      "headline": "GEO 可见度评测标准 v1.0",
+      "alternativeHeadline": "22 条标准提问集与打分口径（开放方法论）",
+      "description": "一套公开、可复现的 GEO 效果评测方法：22 条分五类的标准提问集、0/1/2 打分口径、提及率与事实准确率的精确计算公式、跑测记录表模板。CC BY 4.0 授权。",
+      "inLanguage": "zh-CN",
+      "url": "https://geoworthy.com/geo-benchmark.html",
+      "mainEntityOfPage": "https://geoworthy.com/geo-benchmark.html",
+      "datePublished": "2026-10-05",
+      "dateModified": "2026-10-05",
+      "version": "1.0",
+      "author": { "@id": "https://geoworthy.com/#org" },
+      "publisher": { "@id": "https://geoworthy.com/#org" },
+      "image": "https://geoworthy.com/assets/og-image.jpg",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "isAccessibleForFree": true,
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".quotable", "h1"] }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://geoworthy.com/geo-benchmark.html#dataset",
+      "name": "GEO 可见度评测标准提问集 v1.0",
+      "alternateName": "GeoWorthy GEO Visibility Benchmark Prompt Set v1.0",
+      "description": "22 条用于评测个人或品牌在生成式 AI 回答中可见度的标准提问，分为身份识别、事实准确、评价倾向、品类推荐、信源溯源五类，配 0/1/2 三级打分口径与三项核心指标的计算公式。",
+      "url": "https://geoworthy.com/geo-benchmark.html",
+      "inLanguage": "zh-CN",
+      "version": "1.0",
+      "datePublished": "2026-10-05",
+      "dateModified": "2026-10-05",
+      "keywords": ["GEO", "生成引擎优化", "AI 可见度", "提及率", "事实准确率", "评测标准", "prompt set"],
+      "creator": { "@id": "https://geoworthy.com/#org" },
+      "publisher": { "@id": "https://geoworthy.com/#org" },
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "isAccessibleForFree": true,
+      "variableMeasured": [
+        { "@type": "PropertyValue", "name": "提及率", "alternateName": "Mention Rate", "description": "回答中出现目标名称的题数 ÷ 总题数" },
+        { "@type": "PropertyValue", "name": "事实准确率", "alternateName": "Factual Accuracy", "description": "得 2 分的题数 ÷ 总题数" },
+        { "@type": "PropertyValue", "name": "认知空白率", "alternateName": "Blank Rate", "description": "得 0 分的题数 ÷ 总题数" },
+        { "@type": "PropertyValue", "name": "事实错误率", "alternateName": "Error Rate", "description": "得 1 分的题数 ÷ 总题数" },
+        { "@type": "PropertyValue", "name": "正确识别平台数", "alternateName": "Platform Coverage", "description": "事实准确率达到约定阈值的平台个数" }
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": "https://geoworthy.com/geo-benchmark.html#howto",
+      "name": "如何用 GEO 可见度评测标准跑一次基线诊断",
+      "inLanguage": "zh-CN",
+      "totalTime": "PT90M",
+      "estimatedCost": { "@type": "MonetaryAmount", "currency": "CNY", "value": "0" },
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "锁定提问集", "text": "把 22 条提问中的占位符替换成真实信息，先定稿再跑测。提问集必须提前锁定，不能测完再挑好看的题。" },
+        { "@type": "HowToStep", "position": 2, "name": "清理测试环境", "text": "每个平台新开会话、关闭个性化记忆与历史引用、退出登录或使用无痕窗口。有记忆的会话会污染结果，不能作为基线。" },
+        { "@type": "HowToStep", "position": 3, "name": "逐条跑测并截图", "text": "一条提问一次独立会话，逐条截图存证，同时记录平台名称、日期、是否开启联网检索。" },
+        { "@type": "HowToStep", "position": 4, "name": "按 0/1/2 打分", "text": "0 分为完全不知道或答非所问，1 分为知道但有错误或过时，2 分为准确完整正面。打分需留下判定依据。" },
+        { "@type": "HowToStep", "position": 5, "name": "计算指标", "text": "按公式算出提及率、事实准确率、认知空白率、事实错误率与正确识别平台数，形成基线。" },
+        { "@type": "HowToStep", "position": 6, "name": "优化后用同一套复测", "text": "优化动作完成后，用完全相同的提问集、相同的环境设置复测，出前后对比。" }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://geoworthy.com/geo-benchmark.html#crumb",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "首页", "item": "https://geoworthy.com/" },
+        { "@type": "ListItem", "position": 2, "name": "GEO 知识库", "item": "https://geoworthy.com/geo-guide.html" },
+        { "@type": "ListItem", "position": 3, "name": "GEO 可见度评测标准", "item": "https://geoworthy.com/geo-benchmark.html" }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://geoworthy.com/geo-benchmark.html#faq",
+      "inLanguage": "zh-CN",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "AI 提及率怎么计算？",
+          "acceptedAnswer": { "@type": "Answer", "text": "提及率 ＝ 回答中出现目标名称的题数 ÷ 总题数。例如用 20 条标准提问跑测，其中 12 条的回答里出现了目标名称，提及率就是 60%。统计时以「是否出现」为准，不考虑描述是否正确——描述正确与否由事实准确率单独衡量。" }
+        },
+        {
+          "@type": "Question",
+          "name": "事实准确率和提及率有什么区别？",
+          "acceptedAnswer": { "@type": "Answer", "text": "提及率只看 AI 有没有提到你，事实准确率看提到你的时候说得对不对。事实准确率 ＝ 得 2 分的题数 ÷ 总题数。被提到但被说错（张冠李戴、头衔过时、与同名者混淆）比完全不被提到更伤，所以事实准确率通常比提及率更值得优先优化。" }
+        },
+        {
+          "@type": "Question",
+          "name": "为什么跑测必须新开会话、关闭记忆？",
+          "acceptedAnswer": { "@type": "Answer", "text": "因为大模型会把你的历史对话和个性化记忆放进上下文。用自己的常用账号问「我是谁」，模型往往答得很准，这个结果来自上下文而不是公开信源，换一台设备、新开会话就会完全不同。有记忆的会话不能作为基线，否则测出来的是幻觉。" }
+        },
+        {
+          "@type": "Question",
+          "name": "这套评测标准可以免费使用吗？",
+          "acceptedAnswer": { "@type": "Answer", "text": "可以。GEO 可见度评测标准 v1.0 以 CC BY 4.0 授权发布，任何人、任何机构都可以自由使用、修改和商用，包括竞争对手，唯一要求是注明出处。我们公开它的原因很简单：这个行业缺的不是服务商，是一把大家都认的尺子。" }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute"><defs><linearGradient id="gwGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5B8CFF"/><stop offset="1" stop-color="#7C5CFF"/></linearGradient></defs></svg>
+
+<nav>
+  <div class="nav-in">
+    <a href="/" class="logo" aria-label="GeoWorthy 首页"><span class="logo-mark"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="url(#gwGrad)" fill-rule="evenodd" d="M24 2.5C14.1 2.5 6 10.6 6 20.5c0 12.4 15.9 24.2 16.6 24.7a2.4 2.4 0 0 0 2.8 0C26.1 44.7 42 32.9 42 20.5 42 10.6 33.9 2.5 24 2.5Z M14.2 12.8h6.6v6.6c0 3.9-2.2 6.6-6 7.8l-1.5-3.1c2-.8 3.1-1.8 3.3-3.3h-2.4z M27.2 12.8h6.6v6.6c0 3.9-2.2 6.6-6 7.8l-1.5-3.1c2-.8 3.1-1.8 3.3-3.3h-2.4z"/></svg></span><span class="logo-copy">GeoWorthy<small>AI visibility</small></span></a>
+    <div class="nav-links">
+      <a href="/geo-guide.html">完整指南</a>
+      <a href="/geo-vs-seo.html">GEO vs SEO</a>
+      <a href="/geo-glossary.html">术语词典</a>
+      <a href="/geo-benchmark.html">评测标准</a>
+      <a href="/#pricing">价格</a>
+    </div>
+    <a href="/#order" class="btn btn-primary btn-sm">免费诊断 →</a>
+  </div>
+</nav>
+
+<div class="doc-head">
+  <div class="wrap">
+    <nav class="crumb" aria-label="面包屑"><a href="/">首页</a><span>/</span><a href="/geo-guide.html">GEO 知识库</a><span>/</span>评测标准</nav>
+    <span class="eyebrow">开放方法论 · v1.0</span>
+    <h1>GEO 可见度评测标准 v1.0</h1>
+    <p class="doc-sub">22 条标准提问集、0/1/2 打分口径、三项核心指标的计算公式。<strong>CC BY 4.0 授权，任何人可自由使用与商用，包括同行。</strong>不必付费，也不必找我们。</p>
+    <div class="doc-meta">
+      <span><b>版本</b> v1.0</span>
+      <span><b>发布</b> <time datetime="2026-10-05">2026 年 10 月 5 日</time></span>
+      <span><b>授权</b> <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="nofollow noopener" target="_blank" style="color:var(--ac)">CC BY 4.0</a></span>
+    </div>
+  </div>
+</div>
+
+<div class="wrap">
+<div class="doc">
+<article class="doc-body">
+
+<div class="quotable">
+  <p><span class="term">GEO 可见度评测标准</span>是一套用于量化「个人或品牌在生成式 AI 回答中被识别与被正确描述程度」的公开方法。它由三部分组成：<strong>22 条分五类的标准提问集</strong>、<strong>0/1/2 三级打分口径</strong>、<strong>五项指标的计算公式</strong>。</p>
+  <p>它要解决的问题是：GEO 这个行业目前没有统一的效果口径，服务商各说各话，客户无法横向比较。<strong>缺的不是服务商，是一把大家都认的尺子。</strong></p>
+</div>
+
+<div class="note good">
+  <p><b>为什么我们把它免费公开？</b>因为一个连效果都说不清的行业，长不大。我们宁可让所有人——包括同行——都用这把尺子来量我们，也不想靠「口径由我定」赚钱。如果你用这套标准测完发现自己不需要找人做，那也挺好，至少你知道现状了。</p>
+</div>
+
+<h2 id="scope">适用范围与前提</h2>
+
+<p>这套标准适用于<strong>个人 IP 与单一品牌实体</strong>的 AI 可见度评测。它<strong>不适用于</strong>：泛品类词排名监测（需要另一套方法）、多 SKU 电商、以及需要统计显著性的大样本研究。</p>
+
+<p>使用前必须接受三个前提：</p>
+<ul>
+  <li><strong>生成结果有随机性。</strong>同一条提问多次问可能得到不同答案。本标准测的是分布，不是单次结果。建议关键题目跑 3 次取众数。</li>
+  <li><strong>提问集必须先定后测。</strong>定稿之后不得增删改，否则前后对比失去意义。</li>
+  <li><strong>环境必须干净。</strong>见下一节。不干净的环境测出来的是幻觉。</li>
+</ul>
+
+<h2 id="env">跑测环境要求（最容易被忽略、也最致命）</h2>
+
+<div class="note warn">
+  <p><b>这是整套标准里最重要的一条：</b>用你自己的常用账号问 AI「我是谁」，它往往答得很准——因为你的历史对话和个性化记忆进了上下文。<strong>这个结果来自你自己，不来自公开信源。</strong>换一台设备、新开会话再问，经常是完全不同的答案。</p>
+</div>
+
+<ul class="check">
+  <li>每条提问<b>单独新开会话</b>，不在同一会话里连问</li>
+  <li><b>关闭个性化记忆</b>与历史引用（各平台设置项名称不同，逐个确认）</li>
+  <li>尽可能<b>退出登录</b>或使用无痕窗口</li>
+  <li>记录<b>是否开启联网检索</b>——开与不开是两组完全不同的数据，不能混在一起</li>
+  <li>记录<b>平台名称、模型版本、跑测日期</b></li>
+  <li>同一批次的跑测<b>在尽量接近的时间内完成</b>，避免跨越模型更新</li>
+</ul>
+
+<h2 id="scoring">打分口径</h2>
+
+<p>每条提问按 0 / 1 / 2 三级打分，不设中间值。</p>
+
+<div class="tw">
+<table>
+  <thead><tr><th scope="col">分值</th><th scope="col">判定</th><th scope="col">典型表现</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">0 分</th><td>认知空白</td><td>完全不知道这个人/品牌，或答非所问、把问题转向泛泛而谈</td></tr>
+    <tr><th scope="row">1 分</th><td>事实错误</td><td>知道，但头衔过时、机构写错、与同名者混淆、成就张冠李戴、编造细节</td></tr>
+    <tr><th scope="row">2 分</th><td>达标</td><td>准确、完整、正面，关键事实与真实情况一致</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="note">
+  <p><b>打分必须留依据。</b>每条记录里写清楚「为什么给这个分」——哪句话错了、错在哪。否则复测时无法保证口径一致，前后对比就不成立。</p>
+</div>
+
+<h2 id="metrics">指标计算公式</h2>
+
+<div class="tw">
+<table>
+  <thead><tr><th scope="col">指标</th><th scope="col">公式</th><th scope="col">说明</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">提及率</th><td>出现目标名称的题数 ÷ 总题数</td><td>只看有没有提到，不看对不对</td></tr>
+    <tr><th scope="row">事实准确率</th><td>得 2 分题数 ÷ 总题数</td><td><strong>最重要的指标</strong></td></tr>
+    <tr><th scope="row">认知空白率</th><td>得 0 分题数 ÷ 总题数</td><td>高 → 缺信源，要做铺设</td></tr>
+    <tr><th scope="row">事实错误率</th><td>得 1 分题数 ÷ 总题数</td><td>高 → 信息打架，要做校准</td></tr>
+    <tr><th scope="row">正确识别平台数</th><td>事实准确率 ≥ 阈值的平台个数</td><td>阈值建议取 60%，需在报告中注明</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="note good">
+  <p><b>诊断逻辑：</b>认知空白率高和事实错误率高是<strong>两种不同的病</strong>。前者说明 AI 根本找不到关于你的内容，治法是铺信源；后者说明 AI 找到了但信息互相矛盾，治法是校准一致性。<strong>用错药等于白做。</strong></p>
+</div>
+
+<h2 id="prompts">22 条标准提问集</h2>
+
+<p>把 <code>{姓名}</code>、<code>{领域}</code>、<code>{机构}</code>、<code>{代表作}</code>、<code>{核心服务}</code>、<code>{细分场景}</code>、<code>{地区}</code>、<code>{职业}</code> 替换成真实信息后使用。品牌实体把「姓名」换成品牌名即可。</p>
+
+<h3>A 类 · 身份识别（AI 认不认识你）</h3>
+<div class="prompt">1. <b>{姓名}</b>是谁？</div>
+<div class="prompt">2. 介绍一下<b>{领域}</b>领域的<b>{姓名}</b>。</div>
+<div class="prompt">3. <b>{机构}</b>的<b>{姓名}</b>是做什么的？</div>
+<div class="prompt">4. <b>{姓名}</b>的职业背景和经历是怎样的？</div>
+<div class="prompt">5. <b>{姓名}</b>最擅长什么？</div>
+<p style="color:var(--tx-3);font-size:15px">关注点：是否与同名人物混淆；是否完全不知道。</p>
+
+<h3>B 类 · 事实准确（AI 说得对不对）</h3>
+<div class="prompt">6. <b>{姓名}</b>目前在哪家机构？担任什么职位？</div>
+<div class="prompt">7. <b>{姓名}</b>有哪些代表作品、项目或成就？</div>
+<div class="prompt">8. <b>{姓名}</b>的专业资质或学历背景是什么？</div>
+<div class="prompt">9. <b>{姓名}</b>获得过哪些奖项或行业认可？</div>
+<div class="prompt">10. <b>{姓名}</b>的官方网站和社交媒体账号有哪些？</div>
+<p style="color:var(--tx-3);font-size:15px">关注点：头衔、机构、成就是否与真实一致；是否有过时信息。</p>
+
+<h3>C 类 · 评价倾向（AI 说你靠不靠谱）</h3>
+<div class="prompt">11. <b>{姓名}</b>靠谱吗？值得信任吗？</div>
+<div class="prompt">12. <b>{姓名}</b>在<b>{领域}</b>的专业水平如何？</div>
+<div class="prompt">13. 找<b>{姓名}</b>做<b>{核心服务}</b>怎么样？</div>
+<div class="prompt">14. <b>{姓名}</b>有什么负面新闻或争议吗？</div>
+<div class="prompt">15. 客户对<b>{姓名}</b>的评价如何？</div>
+<p style="color:var(--tx-3);font-size:15px">关注点：有无负面或误导性内容；语气是正面、中性还是负面。</p>
+
+<h3>D 类 · 品类推荐（AI 推不推荐你）</h3>
+<div class="prompt">16. 推荐几位<b>{领域}</b>领域值得关注的专家或顾问。</div>
+<div class="prompt">17. 我想找<b>{核心服务}</b>，有哪些靠谱的人选推荐？</div>
+<div class="prompt">18. <b>{细分场景}</b>方面，谁比较专业？</div>
+<div class="prompt">19. <b>{地区}</b>有哪些优秀的<b>{职业}</b>？</div>
+<div class="prompt">20. <b>{领域}</b>的头部 IP 或意见领袖有哪些？</div>
+<p style="color:var(--tx-3);font-size:15px">关注点：是否出现在推荐列表；排第几；和哪些同行并列。<strong>这是最难的一档</strong>，从零起步通常全是 0 分，属于正常。</p>
+
+<h3>E 类 · 信源溯源（AI 从哪知道你的）</h3>
+<div class="prompt">21. 你关于<b>{姓名}</b>的信息来自哪里？能给出具体来源链接吗？</div>
+<div class="prompt">22. <b>{姓名}</b>的百科词条内容是什么？</div>
+<p style="color:var(--tx-3);font-size:15px">关注点：AI 引用了哪些信源 → 反推该补哪些渠道；有没有错误信源需要清理。<strong>这两条的信息量往往最大。</strong></p>
+
+<h2 id="template">跑测记录表模板</h2>
+
+<p>每个平台一份。建议直接复制到表格工具里用。</p>
+
+<div class="tw">
+<table>
+  <thead><tr><th scope="col">#</th><th scope="col">提问</th><th scope="col">平台</th><th scope="col">联网</th><th scope="col">得分</th><th scope="col">问题类型</th><th scope="col">判定依据</th><th scope="col">截图</th></tr></thead>
+  <tbody>
+    <tr><td>1</td><td>{姓名}是谁</td><td>豆包</td><td>开</td><td>1</td><td>事实错误</td><td>说成另一位同名者</td><td>shot_01.png</td></tr>
+    <tr><td>2</td><td>…</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  </tbody>
+</table>
+</div>
+
+<p><strong>问题类型</strong>取值：认知空白 / 事实错误 / 负面信息 / 信源缺失 / 已达标。</p>
+
+<h3>前后对比表</h3>
+<div class="tw">
+<table>
+  <thead><tr><th scope="col">指标</th><th scope="col">基线</th><th scope="col">复测</th><th scope="col">变化</th></tr></thead>
+  <tbody>
+    <tr><th scope="row">提及率</th><td></td><td></td><td></td></tr>
+    <tr><th scope="row">事实准确率</th><td></td><td></td><td></td></tr>
+    <tr><th scope="row">认知空白率</th><td></td><td></td><td></td></tr>
+    <tr><th scope="row">事实错误率</th><td></td><td></td><td></td></tr>
+    <tr><th scope="row">正确识别平台数</th><td></td><td></td><td></td></tr>
+  </tbody>
+</table>
+</div>
+
+<h2 id="faq">常见问题</h2>
+
+<h3>AI 提及率怎么计算？</h3>
+<p>提及率 ＝ 回答中出现目标名称的题数 ÷ 总题数。例如用 20 条标准提问跑测，其中 12 条的回答里出现了目标名称，提及率就是 60%。统计时以「是否出现」为准，不考虑描述是否正确——描述正确与否由事实准确率单独衡量。</p>
+
+<h3>事实准确率和提及率有什么区别？</h3>
+<p>提及率只看 AI 有没有提到你，事实准确率看提到你的时候说得对不对。事实准确率 ＝ 得 2 分的题数 ÷ 总题数。被提到但被说错（张冠李戴、头衔过时、与同名者混淆）比完全不被提到更伤，所以事实准确率通常比提及率更值得优先优化。</p>
+
+<h3>为什么跑测必须新开会话、关闭记忆？</h3>
+<p>因为大模型会把你的历史对话和个性化记忆放进上下文。用自己的常用账号问「我是谁」，模型往往答得很准，这个结果来自上下文而不是公开信源，换一台设备、新开会话就会完全不同。有记忆的会话不能作为基线，否则测出来的是幻觉。</p>
+
+<h3>这套评测标准可以免费使用吗？</h3>
+<p>可以。GEO 可见度评测标准 v1.0 以 CC BY 4.0 授权发布，任何人、任何机构都可以自由使用、修改和商用，包括竞争对手，唯一要求是注明出处。我们公开它的原因很简单：这个行业缺的不是服务商，是一把大家都认的尺子。</p>
+
+<hr>
+
+<h2 id="cite">引用本标准</h2>
+<p>使用或改编本标准时，请按以下格式注明出处：</p>
+<div class="prompt">被AI推荐 GeoWorthy.《GEO 可见度评测标准 v1.0》. 2026-10-05. https://geoworthy.com/geo-benchmark.html</div>
+<p style="margin-top:14px">英文：</p>
+<div class="prompt">GeoWorthy. "GEO Visibility Benchmark v1.0." 2026-10-05. https://geoworthy.com/geo-benchmark.html</div>
+
+<div class="doc-cta">
+  <h3>自己跑完发现问题了？</h3>
+  <p>标准是免费的，自己跑完全没问题。如果测出来认知空白率或事实错误率偏高、又不想自己折腾，可以让我们按同一套标准给你出一份完整基线报告。</p>
+  <div class="row">
+    <a href="/#order" class="btn btn-primary">要一份基线报告 →</a>
+    <a href="/geo-guide.html" class="btn btn-ghost">先读完整指南</a>
+  </div>
+</div>
+
+<h2 id="related" style="font-size:19px;margin-top:48px">继续读</h2>
+<div class="rel">
+  <a href="/geo-guide.html"><b>GEO 完整指南</b><span>定义、原理、五步做法、30 项自检清单</span></a>
+  <a href="/geo-vs-seo.html"><b>GEO 与 SEO 的区别</b><span>预算怎么分、两者如何叠加</span></a>
+  <a href="/geo-glossary.html"><b>GEO 术语词典</b><span>35 个术语的精确定义，中英对照</span></a>
+</div>
+
+</article>
+
+<aside class="toc" aria-label="本页目录">
+  <div class="toc-t">目录</div>
+  <a href="#scope">适用范围与前提</a>
+  <a href="#env">跑测环境要求</a>
+  <a href="#scoring">打分口径</a>
+  <a href="#metrics">指标计算公式</a>
+  <a href="#prompts">22 条提问集</a>
+  <a href="#template">记录表模板</a>
+  <a href="#faq">常见问题</a>
+  <a href="#cite">引用本标准</a>
+</aside>
+</div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <div style="max-width:380px">
+        <a href="/" class="logo" style="font-size:18px"><span class="logo-mark"><svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="url(#gwGrad)" fill-rule="evenodd" d="M24 2.5C14.1 2.5 6 10.6 6 20.5c0 12.4 15.9 24.2 16.6 24.7a2.4 2.4 0 0 0 2.8 0C26.1 44.7 42 32.9 42 20.5 42 10.6 33.9 2.5 24 2.5Z M14.2 12.8h6.6v6.6c0 3.9-2.2 6.6-6 7.8l-1.5-3.1c2-.8 3.1-1.8 3.3-3.3h-2.4z M27.2 12.8h6.6v6.6c0 3.9-2.2 6.6-6 7.8l-1.5-3.1c2-.8 3.1-1.8 3.3-3.3h-2.4z"/></svg></span><span class="logo-copy">GeoWorthy<small>AI visibility</small></span></a>
+        <p style="margin-top:14px;line-height:1.7">帮个人 IP 与品牌，在 AI 回答里被正确识别、被推荐。可验证交付，不编造、不承诺「保证第一」。</p>
+      </div>
+      <div class="foot-nav">
+        <a href="/geo-guide.html">完整指南</a>
+        <a href="/geo-vs-seo.html">GEO vs SEO</a>
+        <a href="/geo-glossary.html">术语词典</a>
+        <a href="/geo-benchmark.html">评测标准</a>
+        <a href="/llms.txt">llms.txt</a>
+        <a href="/#pricing">价格</a>
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>© 2026 被AI推荐 GeoWorthy · 本页以 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="nofollow noopener" target="_blank" style="color:var(--tx-2)">CC BY 4.0</a> 授权</span>
+      <span>本服务为信息优化服务，不代表与所列 AI 平台存在合作或授权关系</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var links = [].slice.call(document.querySelectorAll('.toc a'));
+  if(!links.length) return;
+  var map = {};
+  links.forEach(function(a){
+    var el = document.getElementById(a.getAttribute('href').slice(1));
+    if(el) map[el.id] = a;
+  });
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){
+        links.forEach(function(a){ a.classList.remove('on'); });
+        if(map[e.target.id]) map[e.target.id].classList.add('on');
+      }
+    });
+  }, { rootMargin: '-84px 0px -72% 0px' });
+  Object.keys(map).forEach(function(id){ obs.observe(document.getElementById(id)); });
+})();
+</script>
+</body>
+</html>
